@@ -1,0 +1,43 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.poster {
+    @include flex(null, row);
+
+    &__image {
+        width: 35%;
+        margin-right: 1.6rem;
+    }
+
+
+
+    &__description {
+        @include flex(null, column);
+
+        &__title {
+            margin-bottom: .8rem;
+        }
+
+        &__release {
+
+            &__date {
+                font-weight: 700;
+            }
+        }
+
+        &__rating {
+            @include flex(null, row);
+            align-items: baseline;
+
+            &__header {
+                font-weight: 700;
+                margin-right: .8rem;
+            }
+
+            &__thumb {
+                @include width-height(2rem, 2rem);
+                margin-left: .8rem;
+            }
+        }
+    }
+}

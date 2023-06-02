@@ -1,0 +1,53 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.header {
+    padding: 1.6rem 1.6rem 0 1.6rem;
+
+    &__inner {
+        @include flex(space-between, row);
+        align-items: center;
+        padding-bottom: 1.6rem;
+        border-bottom: 2px solid var(--header-border-bottom);
+    }
+
+    &__logo {
+        width: 12.5rem;
+        vertical-align: middle;
+
+        @include tablet {
+            width: 15rem;
+        }
+
+        @include desktop {
+            width: 20rem;
+        }
+    }
+}
+
+.mode-toggler {
+    @include width-height(2rem, 2rem);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include tablet {
+        @include width-height(2.5rem, 2.5rem);
+    }
+
+    @include desktop {
+        @include width-height(3rem, 3rem);
+    }
+
+    &__image {
+        @include width-height(2rem, 2rem);
+
+        @include tablet {
+            @include width-height(2.5rem, 2.5rem);
+        }
+
+        @include desktop {
+            @include width-height(3rem, 3rem);
+        }
+    }
+}

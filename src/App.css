@@ -1,0 +1,11 @@
+/* #light {
+  background-color: white;
+}
+
+#dark {
+  background-color: #111;
+} */
+
+.App {
+  background-color: var(--background);
+}

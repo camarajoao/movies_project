@@ -1,0 +1,34 @@
+@mixin mobile {
+    @media (min-width: 320px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin font-size-height-weight($size, $lineheight, $weight) {
+    font-size: $size;
+    line-height: $lineheight;
+    font-weight: $weight;
+}
+
+@mixin flex($justify, $direction) {
+    display: flex;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}

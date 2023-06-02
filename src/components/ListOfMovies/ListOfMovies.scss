@@ -1,0 +1,27 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.intheatres {
+    @include flex(null, row);
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow: hidden;
+
+    &__movie {
+        @include flex(null, column);
+        margin: 0 .8rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__image {
+        width: 15rem;
+    }
+}

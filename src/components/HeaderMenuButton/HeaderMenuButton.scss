@@ -1,0 +1,29 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.header__menu {
+    @include width-height(2rem, 2rem);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include tablet {
+        @include width-height(2.5rem, 2.5rem);
+    }
+
+    @include desktop {
+        @include width-height(3rem, 3rem);
+    }
+
+    &__icon {
+        @include width-height(2rem, 2rem);
+
+        @include tablet {
+            @include width-height(2.5rem, 2.5rem);
+        }
+
+        @include desktop {
+            @include width-height(3rem, 3rem);
+        }
+    }
+}
