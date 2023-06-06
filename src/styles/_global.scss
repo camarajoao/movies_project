@@ -13,7 +13,6 @@ $avenir: 'AvenirNextLTPro';
 
 $movie-light-black: #323232;
 $movie-yellow: #FDC500;
-$movie-gold: #FDC500;
 $silver: #AFAFAF;
 
 h1 {
@@ -43,15 +42,28 @@ h2 {
 }
 
 h3 {
-    @include font-size-height-weight(1.8rem, 2.1rem, 400);
+    @include font-size-height-weight(1.8rem, 2.1rem, 600);
     margin: 0;
 
     @include tablet {
-        @include font-size-height-weight(2.1rem, 2.4rem, 400);
+        @include font-size-height-weight(2.1rem, 2.4rem, 600);
     }
 
     @include desktop {
-        @include font-size-height-weight(2.4rem, 2.7rem, 400);
+        @include font-size-height-weight(2.4rem, 2.7rem, 600);
+    }
+}
+
+h4 {
+    @include font-size-height-weight(1.6rem, 2.4rem, 600);
+    margin: 0;
+
+    @include tablet {
+        @include font-size-height-weight(1.8rem, 2.6rem, 600);
+    }
+
+    @include desktop {
+        @include font-size-height-weight(2.1rem, 3rem, 600);
     }
 }
 
@@ -148,4 +160,12 @@ li {
 
 .section-separator {
     margin: 1.6rem 0;
+}
+
+.pages-styles {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1.6rem;
+    color: var(--text-color);
 }

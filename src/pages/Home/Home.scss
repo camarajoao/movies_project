@@ -2,9 +2,5 @@
 @use "../../styles/mixins" as *;
 
 .home {
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-    padding: 1.6rem;
-    color: var(--text-color);
+    @extend .pages-styles;
 }
