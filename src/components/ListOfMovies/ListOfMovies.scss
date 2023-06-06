@@ -1,7 +1,7 @@
 @use "../../styles/global" as *;
 @use "../../styles/mixins" as *;
 
-.intheatres {
+.movieslist {
     @include flex(null, row);
     box-sizing: border-box;
     flex-wrap: nowrap;

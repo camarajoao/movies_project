@@ -2,41 +2,52 @@
 import './TrailerStage.scss'
 
 import { useState, useEffect } from "react";
+import ReactPlayer from 'react-player/lazy'
 
 import { getRequestParams, getDataFromAPI } from '../../utils';
 
 function TrailerStage(props) {
 
+    // request url -> use movie ID from props
     const reqUrl = `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`
+    // setting the request params for each of the API endpoints
     const trailerParams = getRequestParams(reqUrl);
-
-    const [movieTrailer, setMovieTrailer] = useState(null);
-    
+    const [movieTrailers, setMovieTrailers] = useState(null);
     //function below triggers the helper function
-    const getTrailer = () => getDataFromAPI(trailerParams, setMovieTrailer);
+    const getTrailers = () => getDataFromAPI(trailerParams, setMovieTrailers);
 
+    // this runs the getData trigger function as useEffect
     useEffect(() => {
-        getTrailer();
-    }, []);
+        getTrailers();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [movieTrailers]);
 
-    if (!movieTrailer) {
+    // handle video play state
+    const handlePlay = () => {
+        props.setState(true);
+    };
+
+    // wait until all requests are fulfilled to render page
+    if (!movieTrailers) {
         return
     };
 
-    const officialTrailer = movieTrailer.results.find(trailer => trailer.name.includes("Official Trailer"))
-    const displayedTrailer = officialTrailer ? officialTrailer : movieTrailer.results[movieTrailer.results.length - 1]
+    // try to find a official trailer
+    const officialTrailer = movieTrailers.results.find(trailer => trailer.name.includes("Official Trailer"))
+    // set displayed trailer as the official, if one was found, or the latest movie trailer in the API results list
+    const displayedTrailer = officialTrailer ? officialTrailer : movieTrailers.results[movieTrailers.results.length - 1]
 
-    const youtubeURL = "https://www.youtube.com/embed/";
-    const videoConfig = "?autoplay=1&modestbranding=1&fs=1&rel=0"
-
+    // generate youtube url
+    const reactPlayerUrl = `https://www.youtube.com/embed/${displayedTrailer.key}`
+    
     return (
-        <div className="trailer">
-            <iframe
-                className="responsive-iframe"
-                src={`${youtubeURL}${displayedTrailer.key}${videoConfig}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                title="Embedded youtube"
+        <div className='player-wrapper'>
+            <ReactPlayer 
+                className='react-player'
+                url={reactPlayerUrl}
+                width='100%'
+                height='100%'
+                onPlay={handlePlay}
             />
         </div>
     )

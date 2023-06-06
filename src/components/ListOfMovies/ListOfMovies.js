@@ -8,11 +8,11 @@ function ListOfMovies(props) {
     return (
         <>
             <h1 className="section-separator">{props.sectionTitle}</h1>
-            <div className="intheatres">
+            <div className="movieslist">
                 {moviesList.length > 0 ? moviesList.map((movie) => (
-                    <div className='intheatres__movie'>
-                        <img src={props.imagesBaseUrl + movie.poster_path} className="intheatres__image" />
-                        <h2 className='intheatres__title'>{movie.original_title}</h2>
+                    <div className='movieslist__movie'>
+                        <img src={props.imagesBaseUrl + movie.poster_path} className="movieslist__image" alt={`official poster for the movie ${movie.original_title}`}/>
+                        <h2 className='movieslist__title'>{movie.original_title}</h2>
                     </div>
                 )) : null};
             </div>
