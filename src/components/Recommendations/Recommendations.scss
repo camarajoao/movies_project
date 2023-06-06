@@ -7,11 +7,10 @@
     &__top {
         @extend .section-separator;
         @include flex(space-between, row);
-        align-items: center;
     }
 
     &__cast {
-        @include flex(null, row);
+        @include flex(null, row, null);
         overflow-x: scroll;
         flex-wrap: nowrap;
         box-sizing: border-box;

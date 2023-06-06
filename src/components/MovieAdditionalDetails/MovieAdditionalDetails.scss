@@ -3,13 +3,11 @@
 
 .movie__rating-trailer {
     @include flex(space-between, row);
-    align-items: center;
     @extend .section-separator;
 }
 
 .movie__rating {
     @include flex(center, row);
-    align-items: center;
     vertical-align: middle;
     height: 3rem;
     width: 40%;
@@ -28,7 +26,6 @@
 
     &__play {
         @include flex(center, row);
-        align-items: center;
         width: 40%;
 
         &__text {

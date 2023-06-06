@@ -4,7 +4,6 @@
 .movie-header {
     &__details {
         @include flex(null, row);
-        align-items: center;
         margin-top: .8rem;
     }
 

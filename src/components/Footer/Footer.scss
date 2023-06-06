@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .footer {
-    @include flex(center, column);
+    @include flex(center, column,);
     margin-top: 3.2rem;
     width: 100%;
     padding: 2.4rem 0;

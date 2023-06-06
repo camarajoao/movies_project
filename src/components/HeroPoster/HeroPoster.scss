@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .poster {
-    @include flex(null, row);
+    @include flex(null, row, null);
 
     &__image {
         width: 35%;
@@ -12,7 +12,7 @@
 
 
     &__description {
-        @include flex(null, column);
+        @include flex(null, column, null);
 
         &__title {
             margin-bottom: .8rem;
@@ -26,8 +26,7 @@
         }
 
         &__rating {
-            @include flex(null, row);
-            align-items: baseline;
+            @include flex(null, row, baseline);
 
             &__header {
                 font-weight: 700;

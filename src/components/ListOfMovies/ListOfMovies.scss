@@ -2,14 +2,14 @@
 @use "../../styles/mixins" as *;
 
 .movieslist {
-    @include flex(null, row);
+    @include flex(null, row, null);
     box-sizing: border-box;
     flex-wrap: nowrap;
     width: 100%;
     overflow: hidden;
 
     &__movie {
-        @include flex(null, column);
+        @include flex(null, column, null);
         margin: 0 .8rem;
 
         &:first-child {
