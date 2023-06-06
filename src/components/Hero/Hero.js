@@ -1,52 +1,41 @@
 // child of Home page
 import './Hero.scss'
+import HeroPoster from "../../components/HeroPoster/HeroPoster";
+import TrailerStage from '../TrailerStage/TrailerStage';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-import axios from 'axios';
 
-function Hero() {
+function Hero(props) {
 
-    const trailerRequest = {
-        method: 'GET',
-        url: 'https://api.themoviedb.org/3/movie/502356/videos?language=en-US',
-        headers: {
-            accept: 'application/json',
-            Authorization: process.env.REACT_APP_BEARER_KEY
-        }
-    };
+    const [current, setCurrent] = useState(0)
 
-    const [movieTrailer, setMovieTrailer] = useState(null);
+    const nextMovie = () => {
+        setCurrent(current === props.movies.length - 1 ? 0 : current + 1);
+    }
+    const previousMovie = () => {
+        setCurrent(current === 0 ? props.movies.length - 1 : current - 1);
+    }
 
+    // auto slider behaviour -> change to next slide every 3 seconds, unless mouse is over slide or media is playing
+    const [hover, setHover] = useState(false);
+    const [playing, setPlaying] = useState(false);
+    const timeoutRef = useRef(null);
     useEffect(() => {
-        axios
-            .request(trailerRequest)
-            .then(function (response) {
-                setMovieTrailer(response.data.results);
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-    }, []);
+        if (timeoutRef.current) {
+            clearInterval(timeoutRef.current);
+        }
+        if (!hover && !playing) {
+            timeoutRef.current = setInterval(nextMovie, 8000);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [current, hover, playing]);
 
-    if (!movieTrailer) {
-        return
-    };
-
-    const movieURL = movieTrailer[27].key;
-
-    const youtubeURL = "https://www.youtube.com/embed/";
-    const videoConfig = "?autoplay=1&modestbranding=1&fs=1&rel=0"
 
     return (
-        <div className="trailer">
-            <iframe
-                className="responsive-iframe"
-                src={`${youtubeURL}${movieURL}${videoConfig}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                title="Embedded youtube"
-            />
+        <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            <TrailerStage movieId={props.movies[current].id} setState={setPlaying} notPlayable={nextMovie}/>
+            <HeroPoster imagesBaseUrl={props.imagesBaseUrl} movie={props.movies[current]} genreList={props.genreList.genres} />
         </div>
     )
 }
