@@ -2,73 +2,56 @@ import "./Home.scss";
 
 import { useState, useEffect } from "react";
 
-import axios from 'axios';
 
 import Hero from "../../components/Hero/Hero";
-import HeroPoster from "../../components/HeroPoster/HeroPoster";
 import ListOfMovies from "../../components/ListOfMovies/ListOfMovies";
+import { getRequestParams, getDataFromAPI } from "../../utils"
 
 export default function Home() {
-
-    const options = {
-        method: 'GET',
-        url: 'https://api.themoviedb.org/3/configuration',
-        headers: {
-            accept: 'application/json',
-            Authorization: process.env.REACT_APP_BEARER_KEY
-        }
-    };
-
-    const genres = {
-        method: 'GET',
-        url: 'https://api.themoviedb.org/3/genre/movie/list?language=en',
-        headers: {
-            accept: 'application/json',
-            Authorization: process.env.REACT_APP_BEARER_KEY
-        }
-    };
-
+    // states for data retrieved from API
     const [details, setDetails] = useState(null);
     const [genreList, setGenreList] = useState(null);
+    const [inTheatres, setInTheatres] = useState(null);
+    const [popular, setPopular] = useState(null);
+    const [upcoming, setUpcoming] = useState(null);
+    
+    // setting the request params for each of the API endpoints
+    const detailsParams = getRequestParams('https://api.themoviedb.org/3/configuration');
+    const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en')
+    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1')
+    const popularParams = getRequestParams('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
+    const upcomingParams = getRequestParams('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1');
+  
+    // function below triggers the helper function
+    const getDetails = () => getDataFromAPI(detailsParams, setDetails)
+    const getGenreList = () => getDataFromAPI(genreListParams, setGenreList)
+    const getInTheatres = () => getDataFromAPI(inTheatresParams, setInTheatres)
+    const getPopular = () => getDataFromAPI(popularParams, setPopular)
+    const getUpcoming = () => getDataFromAPI(upcomingParams, setUpcoming)
 
-    useEffect(() => {
-        axios
-            .request(options)
-            .then((response) => {
-                setDetails(response.data);
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-    }, []);
+    // this runs the getData trigger function as useEffect
+    useEffect(()=>{
+        getDetails()
+        getGenreList()
+        getInTheatres()
+        getPopular()
+        getUpcoming()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-    useEffect(() => {
-        axios
-            .request(genres)
-            .then((response) => {
-                setGenreList(response.data.genres);
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-    }, []);
-
-    if (!details || !genreList) {
+    // wait until all requests are fulfilled to render page
+    if (!details || !genreList || !inTheatres || !popular || !upcoming) {
         return
     }
-
-    const baseUrl = `${details.images.secure_base_url}original`;
-    const inTheatresRequestUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
-    const popularRequestUrl = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
-    const upcomingRequestUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1'
+    // set the images base url with data from API
+    const imagesBaseUrl = `${details.images.secure_base_url}original`;
 
     return (
         <div className="home">
-            <Hero />
-            <HeroPoster baseUrl={baseUrl} requestUrl={inTheatresRequestUrl} genreList={genreList} />
-            <ListOfMovies baseUrl={baseUrl} requestUrl={inTheatresRequestUrl} sectionTitle={"In Theatres"}/>
-            <ListOfMovies baseUrl={baseUrl} requestUrl={popularRequestUrl} sectionTitle={"Popular"}/>
-            <ListOfMovies baseUrl={baseUrl} requestUrl={upcomingRequestUrl} sectionTitle={"Upcoming"}/>
+            <Hero imagesBaseUrl={imagesBaseUrl} movies={inTheatres.results.slice(0,6)} genreList={genreList} />
+            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={inTheatres.results} sectionTitle={"In Theatres"}/>
+            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={popular.results} sectionTitle={"Popular"}/>
+            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={upcoming.results} sectionTitle={"Upcoming"}/>
         </div>
     )
 }
