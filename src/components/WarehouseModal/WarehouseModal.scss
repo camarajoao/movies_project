@@ -1,0 +1,117 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(19, 24, 44, .7);
+
+    @include tablet {
+        padding: 0 3rem;
+    }
+
+    &__content {
+        margin: auto;
+        height: 100%;
+        padding: 1.5rem 1rem;
+        background-color: $primary-color-White;
+        position: relative;
+
+        @include tablet {
+            width: 42rem;
+            height: 16.375rem;
+            padding: 2.5rem 4rem;
+            margin-top: 11.5625rem;
+            @include flex(space-between, column);
+        }
+    }
+
+    &__header {
+        margin: 2.25rem 0 1rem 0;
+
+        @include tablet {
+            margin-top: 0;
+        }
+
+        &-title {
+            @include textStyle($primary-color-Instock-Black, 1.75rem, 2.25rem, 600);
+
+            @include tablet {
+                @include textStyle($primary-color-Instock-Black, 2rem, 2.5rem, 600);
+            }
+        }
+    }
+
+    &__body {
+        &-p {
+            @include textStyle($primary-color-Instock-Black, 0.9375rem, 1.625rem, 400);
+
+            @include tablet {
+                @include textStyle($primary-color-Instock-Black, 1rem, 1.75rem, 400);
+            }
+        }
+    }
+
+    &__footer {
+        @include flex(space-between, row);
+        position: fixed;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            position: static;
+            padding-bottom: 0;
+            @include flex(flex-end, row);
+        }
+    }
+
+    &__cancel {
+        @include textStyle($secondary-color-Slate, 0.8125rem, 1.25rem, 600);
+        height: 2.25rem;
+        width: 47.52%;
+        border: 1px solid $secondary-color-Cloud;
+        border-radius: 1.25rem;
+        background-color: $primary-color-White;
+        cursor: pointer;
+        padding: 0 1rem;
+
+        @include tablet {
+            height: 2.375rem;
+            width: 4.5rem;
+            margin-right: 1rem;
+        }
+    }
+
+    &__delete {
+        @include textStyle($primary-color-White, 0.8125rem, 1.25rem, 600);
+        height: 2.25rem;
+        width: 47.52%;
+        border-radius: 1.25rem;
+        background-color: $supporting-color-Red;
+        border: none;
+        cursor: pointer;
+        padding: 0 1rem;
+
+        @include tablet {
+            height: 2.375rem;
+            width: 4.5rem;
+        }
+    }
+
+    &__close {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 1.25rem;
+        top: 1.25rem;
+        cursor: pointer;
+        @include width-height(1.5rem, 1.5rem)
+
+    }
+}

@@ -1,0 +1,38 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.movie__rating-trailer {
+    @include flex(space-between, row);
+    align-items: center;
+    @extend .section-separator;
+}
+
+.movie__rating {
+    @include flex(center, row);
+    align-items: center;
+    vertical-align: middle;
+    height: 3rem;
+    width: 40%;
+
+    &__rate {
+        margin-top: .5rem;
+        margin-left: .5rem;
+    }
+
+    &__pipe {
+        width: 2px;
+        height: 3rem;
+        display: inline-block;
+        border-left: 1px solid var(--text-color);
+    }
+
+    &__play {
+        @include flex(center, row);
+        align-items: center;
+        width: 40%;
+
+        &__text {
+            margin-top: .25rem;
+        }
+    }
+}

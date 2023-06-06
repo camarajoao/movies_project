@@ -1,0 +1,6 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.individual-movie {
+    @extend .pages-styles;
+}
