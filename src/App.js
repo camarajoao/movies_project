@@ -7,6 +7,7 @@ import { createContext } from "react";
 
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
+import IndividualMovie from './pages/IndividualMovie/IndividualMovie';
 import useLocalStorage from 'use-local-storage';
 
 export const ThemeContext = createContext(null)
@@ -25,7 +26,7 @@ function App() {
           <Header theme={theme} toggleTheme={toggleTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/videos/:videoId" element={<Home />} /> */}
+            <Route path="/movies" element={<IndividualMovie theme={theme} />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -1,0 +1,64 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.recommendations {
+    position: relative;
+
+    &__top {
+        @extend .section-separator;
+        @include flex(space-between, row);
+    }
+
+    &__cast {
+        @include flex(null, row, null);
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+
+        @include desktop {
+            overflow-x: hidden;
+        }
+    }
+
+    &__container {
+        width: 15rem;
+        margin: 0 .8rem;
+        border-radius: .4rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__movie-picture {
+        width: 15rem;
+        border-radius: .4rem;
+    }
+
+    &__movie-details {
+        padding: .4rem .8rem;
+    }
+
+    &__button-left,
+    &__button-right {
+        @include width-height(3rem, 3rem);
+        display: none;
+        border: none;
+        background-color: transparent;
+        margin-left: 1.6rem;
+        cursor: pointer;
+
+        &__arrow {
+            @include width-height(3rem, 3rem);
+        }
+
+        @include desktop {
+            display: initial;
+        }
+    }
+}

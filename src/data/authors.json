@@ -1,0 +1,22 @@
+[
+    {
+        "tag": "JoaoCamara",
+        "name": "Joao Camara",
+        "nameLC": "joaocamara",
+        "email": "joao@justwebdevelopers.com",
+        "socials": {
+            "linkedin": "https://www.linkedin.com/in/joao-camara/",
+            "github": "https://github.com/camarajoao"
+        }
+    },
+    {
+        "tag": "ThaisCampos",
+        "name": "Thais Campos",
+        "nameLC": "thaiscampos",
+        "email": "thais@justwebdevelopers.com",
+        "socials": {
+            "linkedin": "https://www.linkedin.com/in/thaismca/",
+            "github": "https://github.com/thaismca"
+        }
+    }
+]

@@ -1,0 +1,22 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.movie-overview {
+    box-sizing: border-box;
+    background-color: var(--secondary-background-color);
+    position: relative;
+    width: 100vw;
+    left: -1.6rem;
+    padding: 1.6rem;
+
+    &__tagline {
+        font-style: italic;
+        color: var(--tagline-color);
+        font-size: 110%;
+        font-weight: 700;
+    }
+
+    &__header {
+        @extend .section-separator;
+    }
+}
