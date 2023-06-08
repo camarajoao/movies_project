@@ -10,9 +10,9 @@
     padding: 1.6rem;
     margin-top: 1.6rem;
 
-    // &__header {
-    //     // @extend .section-separator;
-    // }
+    @include tablet {
+        left: -3.2rem;
+    }
 
     &__categories {
         @include flex(null, row, null);

@@ -9,6 +9,10 @@
     left: -1.6rem;
     padding: 1.6rem;
 
+    @include tablet {
+        left: -3.2rem;
+    }
+
     &__tagline {
         font-style: italic;
         color: var(--tagline-color);

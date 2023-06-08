@@ -26,16 +26,26 @@ function Hero(props) {
             clearInterval(timeoutRef.current);
         }
         if (!hover && !playing) {
-            timeoutRef.current = setInterval(nextMovie, 8000);
+            timeoutRef.current = setInterval(nextMovie, 6000);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current, hover, playing]);
 
 
     return (
-        <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <TrailerStage movieId={props.movies[current].id} setState={setPlaying} notPlayable={nextMovie}/>
-            <HeroPoster imagesBaseUrl={props.imagesBaseUrl} movie={props.movies[current]} genreList={props.genreList.genres} />
+        <div>
+            <TrailerStage
+                movieId={props.movies[current].id}
+                setState={setPlaying}
+                notPlayable={nextMovie}
+                hover={hover}
+                setHover={setHover} />
+            <HeroPoster
+                imagesBaseUrl={props.imagesBaseUrl}
+                movie={props.movies[current]}
+                genreList={props.genreList.genres}
+                hover={hover}
+                setHover={setHover} />
         </div>
     )
 }

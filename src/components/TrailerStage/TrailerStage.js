@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import ReactPlayer from 'react-player/lazy'
 
 import { getRequestParams, getDataFromAPI } from '../../utils';
+import movieTheatre from '../../assets/images/favpng_theater-drapes-and-stage-curtains-theatre.png'
 
 function TrailerStage(props) {
 
@@ -41,15 +42,21 @@ function TrailerStage(props) {
     const reactPlayerUrl = `https://www.youtube.com/embed/${displayedTrailer.key}`
     
     return (
-        <div className='player-wrapper'>
-            <ReactPlayer 
-                className='react-player'
-                url={reactPlayerUrl}
-                width='100%'
-                height='100%'
-                onPlay={handlePlay}
-            />
+        <div className='trailerstage__background'>
+            <img src={movieTheatre} className='trailerstage__image' />
+            <div className='trailerstage'>
+                <div className='player-wrapper' onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
+                    <ReactPlayer
+                        className='react-player'
+                        url={reactPlayerUrl}
+                        width='100%'
+                        height='100%'
+                        onPlay={handlePlay}
+                    />
+                </div>
+            </div>
         </div>
+        
     )
 }
 

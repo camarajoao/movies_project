@@ -1,36 +1,47 @@
 // child of Home page
 import './HeroPoster.scss';
 
-import thumbUp from '../../assets/icons/hand-thumbs-up-fill.svg';
-import thumbDown from '../../assets/icons/hand-thumbs-down-fill.svg';
+import { Link } from 'react-router-dom';
+
+import { useWindowSize } from '../../helpers/useWindowSize';
 
 function HeroPoster(props) {
 
+    const isTablet = useWindowSize(768);
+
     const moviePoster = `${props.imagesBaseUrl}${props.movie.poster_path}`;
+
+    const backdropImage = `${props.imagesBaseUrl}${props.movie.backdrop_path}`;
 
     const genres = props.movie.genre_ids.map(id => {
         const genre = props.genreList.find((genre) => id === genre.id)
         return genre.name
-    })
+    });
+
+
 
     return (
-        <div className="poster">
-            <img src={moviePoster} className="poster__image" alt={`official poster for the movie ${props.movie.original_title}`}/>
+        <div className="poster" onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
+            <Link className="poster__link">
+                <img src={moviePoster} className="poster__image" alt={`official poster for the movie ${props.movie.original_title}`} />
+            </Link>
+            {isTablet ? <img src={backdropImage} className="poster__backdrop-image" alt={`official backdrop-poster for the movie ${props.movie.original_title}`} /> : null}
             <div className='poster__description'>
                 <h2 className='poster__description__title'>{props.movie.original_title}</h2>
                 <div className='poster__description__release'>
-                    <p className='poster__description__release__date'>Release Date</p>
+                    <h4 className='poster__description__release__header'>Release Date:&nbsp;</h4>
                     <p>{props.movie.release_date}</p>
                 </div>
                 <div className='poster__description__rating'>
-                    <p className='poster__description__rating__header'>Rating:</p>
+                    <h4 className='poster__description__rating__header'>Rating:&nbsp;</h4>
                     <p>{props.movie.vote_average}</p>
-                    <img src={props.movie.vote_average >= 6.0 ? thumbUp : thumbDown} className='poster__description__rating__thumb' alt={props.movie.vote_average >= 6.0 ? 'green thumb up' : 'red thumb down'}/>
                 </div>
                 <div className='poster__description__genre'>
-                    <p className='poster__description__genre__header'>Genre</p>
+                    <h4 className='poster__description__genre__header'>Genre:&nbsp;</h4>
                     <p>{genres.join(", ")}</p>
                 </div>
+                <h4 className="poster__overview__header">Overview</h4>
+                <p className="poster__overview__content">{props.movie.overview}</p>
             </div>
         </div>
     )

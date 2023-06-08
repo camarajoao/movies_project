@@ -13,8 +13,6 @@ function TopCast({ theme, movieUrl, profilePic }) {
 
     const ref = useRef(null);
 
-    
-
     const top10 = profilePic.slice(0, 10);
 
     const scroll = (scrollOffset) => {

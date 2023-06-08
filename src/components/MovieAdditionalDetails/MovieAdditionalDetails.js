@@ -1,16 +1,20 @@
 import './MovieAdditionalDetails.scss';
 
+import { useState } from "react";
+
 import starIcon from '../../assets/icons/star-yellow.svg';
 import playIconBlack from '../../assets/icons/play-black.svg';
 import playIconYellow from '../../assets/icons/play-yellow.svg';
+import TrailerModal from '../TrailerModal/TrailerModal';
+import { set } from 'immutable';
 
 function MovieAdditionalDetails({ movieDetailsRequest, theme }) {
 
     const movieRating = movieDetailsRequest.vote_average.toString().slice(0, 3);
 
-    // const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-    // const onClose = () => setShow(false)
+    const onClose = () => setShow(false)
 
     // <WarehouseModal
     //     onClose={onClose}
@@ -26,10 +30,11 @@ function MovieAdditionalDetails({ movieDetailsRequest, theme }) {
                 <p className='movie__rating__rate'>{`${movieRating}/10`}</p>
             </div>
             <div className="movie__rating__pipe"></div>
-            <div className="movie__rating__play">
+            <button className="movie__rating__play" onClick={() => setShow(true)}>
                 <img src={theme === 'light' ? playIconBlack : playIconYellow} className="movie__rating__play__icon" />
                 <p className='movie__rating__play__text'>Play Trailer</p>
-            </div>
+            </button>
+            <TrailerModal onClose={onClose} show={show} />
         </div>
     )
 }

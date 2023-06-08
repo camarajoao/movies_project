@@ -4,6 +4,10 @@
 .header {
     padding: 1.6rem 1.6rem 0 1.6rem;
 
+    @include tablet {
+        padding: 3.2rem 3.2rem 0 3.2rem;
+    }
+
     &__inner {
         @include flex(space-between, row);
         padding-bottom: 1.6rem;
