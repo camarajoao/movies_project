@@ -1,27 +1,84 @@
 @use "../../styles/global" as *;
 @use "../../styles/mixins" as *;
 
-.movieslist {
-    @include flex(null, row, null);
-    box-sizing: border-box;
-    flex-wrap: nowrap;
-    width: 100%;
-    overflow: hidden;
+.list-of-movies {
+
+    &__header {
+        @extend .section-separator;
+    }
+
+    &__movies {
+        @extend .list-container;
+        width: 100%;
+        overflow: hidden;
+
+        @include desktop-small {
+            @include flex(space-between, row, null);
+        }
+    }
+
 
     &__movie {
         @include flex(null, column, null);
-        margin: 0 .8rem;
+        box-shadow: 0px 0px 4px 1px var(--profile-shadow);
+        border-radius: .8rem;
+        @include width-height(100%, 100%);
 
-        &:first-child {
-            margin-left: 0;
+        &__link {
+            text-decoration: none;
+            cursor: pointer;
+            margin: .4rem .8rem;
+
+            &:first-child {
+                margin-left: .3rem;
+            }
+
+            &:last-child {
+                margin-right: .3rem;
+            }
         }
 
-        &:last-child {
-            margin-right: 0;
+        @include desktop-small {
+            width: 18rem;
+        }
+
+        @include desktop-large {
+            width: 20rem;
         }
     }
 
     &__image {
-        width: 15rem;
+        @extend .individual-container__picture;
+        margin-bottom: .8rem;
+
+        @include desktop-small {
+            width: 18rem;
+        }
+
+        @include desktop-large {
+            width: 20rem;
+        }
+    }
+
+    &__title {
+        padding: .8rem;
+        color: var(--text-color);
+
+        @include desktop {
+            @include font-size-height-weight(1.8rem, 2.6rem, 600);
+        }
+    }
+
+    &__top {
+        @include flex(space-between, row);
+    }
+
+    &__button-left,
+    &__button-right {
+        @extend .scroll-buttons;
+
+        &__arrow {
+            @include width-height(3rem, 3rem);
+        }
     }
 }

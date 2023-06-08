@@ -25,7 +25,7 @@ function App() {
         <div className='App' data-theme={theme}>
           <Header theme={theme} toggleTheme={toggleTheme} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home theme={theme} />} />
             <Route path="/movies" element={<IndividualMovie theme={theme} />} />
           </Routes>
         </div>

@@ -168,4 +168,53 @@ li {
     overflow: hidden;
     padding: 1.6rem;
     color: var(--text-color);
+
+    @include tablet {
+        padding: 1.6rem 3.2rem;
+    }
+}
+
+.individual-container {
+    width: 15rem;
+    margin: .4rem .8rem;
+    border-radius: .8rem;
+    box-shadow: 0px 0px 4px 1px var(--profile-shadow);
+
+    &:first-child {
+        margin-left: .3rem;
+    }
+
+    &:last-child {
+        margin-right: .3rem;
+    }
+}
+
+.individual-container__picture {
+    width: 15rem;
+    border-radius: .8rem .8rem 0 0;
+}
+
+.list-container {
+    @include flex(null, row, null);
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    @include desktop-small {
+        overflow-x: hidden;
+    }
+}
+
+.scroll-buttons {
+    @include width-height(3rem, 3rem);
+    display: none;
+    border: none;
+    background-color: transparent;
+    margin-left: 1.6rem;
+    cursor: pointer;
+
+    @include desktop-small {
+        display: initial;
+    }
 }

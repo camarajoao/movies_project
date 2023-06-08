@@ -1,9 +1,45 @@
 @use "../../styles/global" as *;
 @use "../../styles/mixins" as *;
 
+.trailerstage {
+    @include desktop-small {
+        align-self: center;
+        margin: auto;
+        width: 58%;
+        position: absolute;
+        left: 0;
+        top: 24%;
+        right: 1.5%;
+        bottom: 0;
+    }
+
+
+    &__background {
+        @include desktop-small {
+            width: 100vw;
+            left: -3.2rem;
+            position: relative;
+            @include flex(center, null);
+        }
+    }
+
+    &__image {
+        display: none;
+
+        @include desktop-small {
+            display: initial;
+            width: 100%;
+            background-color: #111;
+        }
+
+
+    }
+}
+
 .player-wrapper {
     position: relative;
-    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+    padding-top: 56.25%;
+    /* Player ratio: 100 / (1280 / 720) */
     margin-bottom: 1.6rem;
 }
 

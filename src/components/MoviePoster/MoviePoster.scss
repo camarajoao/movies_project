@@ -8,11 +8,21 @@
     display: flex;
     align-items: center;
 
+    @include desktop-small {
+        max-height: 55rem;
+    }
+
 
     &__backdrop {
         width: 100%;
         position: relative;
         left: 10%;
+
+        @include desktop-small {
+            max-height: 55rem;
+            object-fit: cover;
+                object-position: 50% 50%;
+        }
     }
 
     &__poster {
@@ -20,6 +30,10 @@
         position: absolute;
         left: 0;
         z-index: 2;
+
+        @include desktop-small {
+            max-width: 24rem;
+        }
     }
 }
 

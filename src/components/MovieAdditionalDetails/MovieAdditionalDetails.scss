@@ -15,6 +15,7 @@
     &__rate {
         margin-top: .5rem;
         margin-left: .5rem;
+        color: var(--text-color);
     }
 
     &__pipe {
@@ -27,9 +28,13 @@
     &__play {
         @include flex(center, row);
         width: 40%;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
 
         &__text {
             margin-top: .25rem;
+            color: var(--text-color);
         }
     }
 }
