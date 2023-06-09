@@ -8,9 +8,9 @@ import playIconYellow from '../../assets/icons/play-yellow.svg';
 import TrailerModal from '../TrailerModal/TrailerModal';
 import { set } from 'immutable';
 
-function MovieAdditionalDetails({ movieDetailsRequest, theme }) {
+function MovieAdditionalDetails({ movieDetails, theme }) {
 
-    const movieRating = movieDetailsRequest.vote_average.toString().slice(0, 3);
+    const movieRating = movieDetails.vote_average.toString().slice(0, 3);
 
     const [show, setShow] = useState(false);
 

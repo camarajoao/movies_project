@@ -1,12 +1,12 @@
 import './MoviePoster.scss';
 
-function MoviePoster({ movieDetailsRequest, movieUrl }) {
+function MoviePoster({ movieDetails, imageBaseUrl }) {
 
     return (
         <div className='movie-poster'>
             <div className='background-gradient'></div>
-            <img src={movieUrl + movieDetailsRequest.backdrop_path} className='movie-poster__backdrop' />
-            <img src={movieUrl + movieDetailsRequest.poster_path} className='movie-poster__poster' />
+            <img src={imageBaseUrl + movieDetails.backdrop_path} className='movie-poster__backdrop' />
+            <img src={imageBaseUrl + movieDetails.poster_path} className='movie-poster__poster' />
         </div>
     )
 }

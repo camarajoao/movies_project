@@ -9,7 +9,7 @@ import arrowLeftYellow from '../../assets/icons/arrow-left-yellow.svg';
 import arrowRightBlack from '../../assets/icons/arrow-right-black.svg';
 import arrowRightYellow from '../../assets/icons/arrow-right-yellow.svg';
 
-function Recommendations({ theme, movieUrl }) {
+function Recommendations({ theme, imageBaseUrl }) {
 
     const ref = useRef(null);
 
@@ -57,7 +57,7 @@ function Recommendations({ theme, movieUrl }) {
             <div className='recommendations__cast' ref={ref}>
                 {recommended.map((item) => (
                     <div className='recommendations__container'>
-                        <img src={movieUrl + item.poster_path} className='recommendations__movie-picture' />
+                        <img src={imageBaseUrl + item.poster_path} className='recommendations__movie-picture' />
                         <div className='recommendations__movie-details'>
                             <p>{item.original_title}</p>
                         </div>

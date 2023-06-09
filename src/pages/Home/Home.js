@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Hero from "../../components/Hero/Hero";
 import ListOfMovies from "../../components/ListOfMovies/ListOfMovies";
 import Footer from "../../components/Footer/Footer";
-import { getRequestParams, getDataFromAPI } from "../../utils"
+import { getRequestParams, getDataFromAPI } from "../../helpers/utils"
 
 export default function Home({ theme }) {
     // states for data retrieved from API

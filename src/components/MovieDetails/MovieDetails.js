@@ -1,6 +1,6 @@
 import './MovieDetails.scss';
 
-function MovieDetails({ movieDetailsRequest, crew }) {
+function MovieDetails({ movieDetails, crew }) {
 
     let USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -11,11 +11,11 @@ function MovieDetails({ movieDetailsRequest, crew }) {
         item.job === "Director"
     ))
 
-    const genres = movieDetailsRequest.genres.map((genre) => (
+    const genres = movieDetails.genres.map((genre) => (
         genre.name
     ));
 
-    const languages = movieDetailsRequest.spoken_languages.map((language) => (
+    const languages = movieDetails.spoken_languages.map((language) => (
         language.english_name
     ));
 
@@ -23,17 +23,17 @@ function MovieDetails({ movieDetailsRequest, crew }) {
         person.name
     ));
 
-    // console.log(genres.toString().split(","));
-
     return (
         <div className='moviedetails'>
             <h2 className='moviedetails__header'>Details</h2>
             <div className='moviedetails__categories'>
                 <h4>Release date:&nbsp;</h4>
-                <p>{movieDetailsRequest.release_date}</p>
+                <p>{movieDetails.release_date}</p>
             </div>
-            <h4>Official site:&nbsp;</h4>
-            <p>{movieDetailsRequest.homepage}</p>
+            <div className='moviedetails__categories'>
+                <h4>Official site:&nbsp;</h4>
+                <a href={movieDetails.homepage} target='_blank'>{movieDetails.homepage}</a>
+            </div>
             <div className='moviedetails__categories'>
                 <h4>Genres:&nbsp;</h4>
                 <p>{genres.join(', ')}</p>
@@ -48,11 +48,11 @@ function MovieDetails({ movieDetailsRequest, crew }) {
             </div>
             <div className='moviedetails__categories'>
                 <h4>Budget:&nbsp;</h4>
-                <p>{USDollar.format(movieDetailsRequest.budget)}</p>
+                <p>{USDollar.format(movieDetails.budget)}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Revenue:&nbsp;</h4>
-                <p>{USDollar.format(movieDetailsRequest.revenue)}</p>
+                <p>{USDollar.format(movieDetails.revenue)}</p>
             </div>
         </div>
     )

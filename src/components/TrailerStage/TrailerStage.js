@@ -4,7 +4,7 @@ import './TrailerStage.scss'
 import { useState, useEffect } from "react";
 import ReactPlayer from 'react-player/lazy'
 
-import { getRequestParams, getDataFromAPI } from '../../utils';
+import { getRequestParams, getDataFromAPI } from "../../helpers/utils";
 import movieTheatre from '../../assets/images/favpng_theater-drapes-and-stage-curtains-theatre.png'
 
 function TrailerStage(props) {
