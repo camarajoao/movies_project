@@ -1,19 +1,18 @@
 import './TopCast.scss';
 
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
-import axios from 'axios';
 
 import arrowLeftBlack from '../../assets/icons/arrow-left-black.svg';
 import arrowLeftYellow from '../../assets/icons/arrow-left-yellow.svg';
 import arrowRightBlack from '../../assets/icons/arrow-right-black.svg';
 import arrowRightYellow from '../../assets/icons/arrow-right-yellow.svg';
 
-function TopCast({ theme, movieUrl, profilePic }) {
+function TopCast({ theme, imageBaseUrl, cast }) {
 
     const ref = useRef(null);
 
-    const top10 = profilePic.slice(0, 10);
+    const top10 = cast.slice(0, 10);
 
     const scroll = (scrollOffset) => {
         ref.current.scrollLeft += scrollOffset;
@@ -35,7 +34,7 @@ function TopCast({ theme, movieUrl, profilePic }) {
             <div className='topcast__cast' ref={ref}>
                 {top10.map((item) => (
                     <div className='topcast__profile-container'>
-                        <img src={movieUrl + item.profile_path} className='topcast__profile-picture' />
+                        <img src={imageBaseUrl + item.profile_path} className='topcast__profile-picture' />
                         <div className='topcast__profile-details'>
                             <h4>{item.name}</h4>
                             <p>{item.character}</p>

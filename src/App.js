@@ -26,7 +26,7 @@ function App() {
           <Header theme={theme} toggleTheme={toggleTheme} />
           <Routes>
             <Route path="/" element={<Home theme={theme} />} />
-            <Route path="/movies" element={<IndividualMovie theme={theme} />} />
+            <Route path="/movies/:movieId" element={<IndividualMovie theme={theme} />} />
           </Routes>
         </div>
       </BrowserRouter>

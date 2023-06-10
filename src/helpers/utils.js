@@ -1,77 +1,72 @@
-//function that receives an aray of stacks from a source to get all the stack
-//information and icons to populate a TechStack component
-// export function getStack(source) {
-//     const techs = require('../data/techStack.json');
-//     const stack = [];
-//     for (let item of source) {
-//         let techData = techs.find(tech => tech.tag === item);
-//         let techIcon = require('../assets/icons/techstack/' + techData.iconFileName);
-//         const techObj = { techName: techData.name, icon: techIcon, altText: techData.iconAltText }
-//         stack.push(techObj);
-//     }
+import axios from 'axios'
 
-//     return stack;
-// }
+// Function that receives an url and returns an object with the request params for the tmdb API.
+export function getRequestParams(url) {
+    return {
+        method: 'GET',
+        url: url,
+        headers: {
+            accept: 'application/json',
+            Authorization: process.env.REACT_APP_BEARER_KEY
+        }
+    }
+}
 
-//function that receives an array of project tags from a source to get all the projects information
-// export function getFeaturedProjects(source) {
-//     const projects = require('../data/projects.json');
-//     const projectsImages = require('../data/projectsImages.json');
-//     const projectsData = [];
-//     for (let item of source) {
-//         //get project information
-//         let projectData = projects.find(proj => proj.tag === item);
-//         //get mockup images
-//         let projectImages = projectsImages.find(proj => proj.project === projectData.tag);
-//         projectData.imageLaptop = projectImages.mockups.find(image => image.type === 'laptop');
-//         projectData.imageDevices = projectImages.mockups.find(image => image.type === 'devices');
-//         projectData.imageLaptop.image = require(`../assets/images/projects/${projectData.tag}/${projectData.imageLaptop.filename}`);
-//         projectData.imageDevices.image = require(`../assets/images/projects/${projectData.tag}/${projectData.imageDevices.filename}`);
-//         projectsData.push(projectData);
-//     }
+// Function that receives an object with the request params for the tmdb API and a function to set the state 
+// of a variable that will keep track of the states for data retrieved from API. It makes the request and uses 
+// the setData function to set the response data to the respective variable.
+export async function getDataFromAPI(params, setData) {
+    return await axios
+    .request(params)
+    .then ((res) => {
+        if(res.status === 200){
+            setData(res.data)
+        return {
+            status: res.status,
+            data: res.data
+        }
+    }
+    })
+    .catch((error) =>{
+        console.log(error)
+        return {
+            status: error.status,
+            data: error.response
+        }
+    })
+}
 
-//     return projectsData;
-// }
+// Function that receives movieId and a function to set the state of a variable that will keep track of the states for data
+// retrieved from API. It makes the request and uses the setData function to set the response data to the respective variable.
+export async function getTrailerUrl(movieId, setData) {
+    // request url -> use movie ID from args
+    const reqUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`
+    // setting the request params for each of the API endpoints
+    const trailerParams = getRequestParams(reqUrl);
 
-//function that receives a project to get all the project information
-// export function getProject(project) {
-//     const projects = require('../data/projects.json');
-//     const projectsImages = require('../data/projectsImages.json');
-
-//     //get project information
-//     let projectData = projects.find(proj => proj.nameLC === project);
-    
-//     //get project media
-//     let projectImages = projectsImages.find(proj => proj.project === projectData.tag);
-//     //mockup images
-//     projectData.imageLaptop = projectImages.mockups.find(image => image.type === 'laptop');
-//     projectData.imageDevices = projectImages.mockups.find(image => image.type === 'devices');
-//     projectData.imageLaptop.image = require(`../assets/images/projects/${projectData.tag}/${projectData.imageLaptop.filename}`);
-//     projectData.imageDevices.image = require(`../assets/images/projects/${projectData.tag}/${projectData.imageDevices.filename}`);
-//     //screenshots
-//     for(let imageData of projectImages.screenshots) {
-//         imageData.image = require(`../assets/images/projects/${projectData.tag}/Screenshots/${imageData.filename}`)
-//     }
-//     projectData.screenshots = projectImages.screenshots;
-    
-
-//     return projectData;
-// }
+    return await axios
+    .request(trailerParams)
+    .then((res) => {
+        if(res.status === 200){
+            // try to find a official trailer
+            const officialTrailer = res.data.results.find(trailer => trailer.name.includes("Official Trailer"))
+            // set displayed trailer as the official, if one was found, or the latest movie trailer in the API results list
+            const displayedTrailer = officialTrailer ? officialTrailer : res.data.results[res.data.results.length - 1]
+            // set youtube url
+            setData(`https://www.youtube.com/embed/${displayedTrailer.key}`)
+    }
+    })
+    .catch((error) =>{
+        console.log(error)
+        return {
+            status: error.status,
+            data: error.response
+        }
+    })
+}
 
 
-//function that receives an array of objects to be rendered as a TitledList component 
-// export function getTitledListData(source) {
-//     const keys = [];
-//     const items = [];
-//     for (let key in source) {
-//         keys.push(key);
-//         items.push(source[key]);
-//     }
-//     const titledListData = { titles: keys, lists: items };
-//     return titledListData;
-// }
-
-//function that receives author.tag and create object with icons and links for all author's socials
+//Function that receives author.tag and create object with icons and links for all author's socials.
 export function getSocials(author, color) {
     const authors = require('../data/authors.json');
     const authorData = authors.find(a => a.tag === author);
@@ -82,12 +77,15 @@ export function getSocials(author, color) {
         let social = { icon: socialIcon, link: socialLink, alt: `${key} logo in ${color}` };
         socials.push(social);
     }
-    // let resume = {
-    //     icon: require(`../assets/icons/socials/resume-${color}.png`),
-    //     link: require(`../assets/resumes/${authorData.resumeFilename}`),
-    //     alt: `icon representing a resume in ${color}`
-    // }
-    // socials.push(resume);
-
     return socials;
 }
+
+// Function that converts a total of minutes to a string with the hours and minutes.
+export function timeConvert(totalMinutes) {
+    var hours = Math.floor(totalMinutes / 60);
+    var minutes = totalMinutes % 60;
+    return `${hours}h ${minutes}m`;
+}
+
+
+

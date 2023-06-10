@@ -22,7 +22,7 @@ function HeroPoster(props) {
 
     return (
         <div className="poster" onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
-            <Link className="poster__link">
+            <Link className="poster__link" to={`movies/${props.movie.id}`}>
                 <img src={moviePoster} className="poster__image" alt={`official poster for the movie ${props.movie.original_title}`} />
             </Link>
             {isTablet ? <img src={backdropImage} className="poster__backdrop-image" alt={`official backdrop-poster for the movie ${props.movie.original_title}`} /> : null}

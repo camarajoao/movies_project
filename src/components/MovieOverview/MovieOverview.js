@@ -1,12 +1,12 @@
 import './MovieOverview.scss';
 
-function MovieOverview({ movieDetailsRequest }) {
+function MovieOverview({ movieDetails }) {
 
     return (
         <div className='movie-overview'>
-            <p className='movie-overview__tagline'>{movieDetailsRequest.tagline !== '' ? movieDetailsRequest.tagline : null}</p>
+            <p className='movie-overview__tagline'>{movieDetails.tagline !== '' ? movieDetails.tagline : null}</p>
             <h2 className='movie-overview__header'>Overview</h2>
-            <p>{movieDetailsRequest.overview}</p>
+            <p>{movieDetails.overview}</p>
         </div>
     )
 }

@@ -34,7 +34,7 @@ function ListOfMovies(props) {
             </div>
             <div className="list-of-movies__movies" ref={ref}>
                 {moviesList.length > 0 ? moviesList.map((movie) => (
-                    <Link className='list-of-movies__movie__link'>
+                    <Link className='list-of-movies__movie__link' reloadDocument relative='router' to={`../movies/${movie.id}`}>
                         <div className='list-of-movies__movie'>
                             <img src={props.imagesBaseUrl + movie.poster_path} className="list-of-movies__image" alt={`official poster for the movie ${movie.original_title}`} />
                             <h4 className='list-of-movies__title'>{movie.original_title}</h4>

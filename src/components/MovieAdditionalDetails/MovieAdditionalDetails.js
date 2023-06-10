@@ -8,9 +8,9 @@ import playIconYellow from '../../assets/icons/play-yellow.svg';
 import TrailerModal from '../TrailerModal/TrailerModal';
 import { set } from 'immutable';
 
-function MovieAdditionalDetails({ movieDetailsRequest, theme }) {
+function MovieAdditionalDetails({ movieDetails, theme }) {
 
-    const movieRating = movieDetailsRequest.vote_average.toString().slice(0, 3);
+    const movieRating = movieDetails.vote_average.toString().slice(0, 3);
 
     const [show, setShow] = useState(false);
 
@@ -34,7 +34,11 @@ function MovieAdditionalDetails({ movieDetailsRequest, theme }) {
                 <img src={theme === 'light' ? playIconBlack : playIconYellow} className="movie__rating__play__icon" />
                 <p className='movie__rating__play__text'>Play Trailer</p>
             </button>
-            <TrailerModal onClose={onClose} show={show} />
+            <TrailerModal 
+                onClose={onClose} 
+                show={show}
+                movieId={movieDetails.id}
+            />
         </div>
     )
 }
