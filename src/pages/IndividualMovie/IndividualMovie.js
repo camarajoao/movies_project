@@ -50,7 +50,7 @@ function IndividualMovie({ theme }) {
     if (!movieDetails || !topCast || !recommended) {
         return
     };
-console.log(recommended)
+
     return (
         <div className='individual-movie'>
             <MovieHeader movieDetails={movieDetails} />

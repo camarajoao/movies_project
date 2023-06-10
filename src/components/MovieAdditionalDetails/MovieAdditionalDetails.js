@@ -34,7 +34,11 @@ function MovieAdditionalDetails({ movieDetails, theme }) {
                 <img src={theme === 'light' ? playIconBlack : playIconYellow} className="movie__rating__play__icon" />
                 <p className='movie__rating__play__text'>Play Trailer</p>
             </button>
-            <TrailerModal onClose={onClose} show={show} />
+            <TrailerModal 
+                onClose={onClose} 
+                show={show}
+                movieId={movieDetails.id}
+            />
         </div>
     )
 }
