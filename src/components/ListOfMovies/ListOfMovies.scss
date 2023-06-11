@@ -10,7 +10,6 @@
     &__movies {
         @extend .list-container;
         width: 100%;
-        overflow: hidden;
 
         @include desktop-small {
             @include flex(space-between, row, null);

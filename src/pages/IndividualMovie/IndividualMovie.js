@@ -60,7 +60,7 @@ function IndividualMovie({ theme }) {
             <TopCast theme={theme} imageBaseUrl={imageBaseUrl} cast={topCast.cast} />
             <MovieDetails movieDetails={movieDetails} crew={topCast.crew} />
             <ListOfMovies imagesBaseUrl={imageBaseUrl} movies={recommended.results} sectionTitle={"You may also like"} theme={theme} />
-            <Footer theme={theme} />
+            {/* <Footer theme={theme} /> */}
         </div>
     )
 }

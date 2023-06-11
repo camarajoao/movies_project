@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import IndividualMovie from './pages/IndividualMovie/IndividualMovie';
 import useLocalStorage from 'use-local-storage';
+import Footer from './components/Footer/Footer';
 
 export const ThemeContext = createContext(null)
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Home theme={theme} />} />
             <Route path="/movies/:movieId" element={<IndividualMovie theme={theme} />} />
           </Routes>
+          <Footer theme={theme} />
         </div>
       </BrowserRouter>
     </ThemeContext.Provider>

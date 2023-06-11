@@ -13,9 +13,16 @@ function Socials({ author, socialsClass, color, socialIconImageClass, theme }) {
     return (
         <div className={socialsClass}>
             {socials.map((social, index) => (
-                <SocialIcon socialIcon={social.icon} socialLink={social.link} altText={social.alt} key={index} socialIconImageClass={socialIconImageClass} />
+                <SocialIcon 
+                    socialIcon={social.icon} 
+                    socialLink={social.link} 
+                    altText={social.alt} 
+                    key={index} 
+                    socialIconImageClass={socialIconImageClass} />
             ))}
-            <EmailIcon socialLink={author.tag === "JoaoCamara" ? "/joaocamara/#author-contact-form" : "/thaiscampos/#author-contact-form"} theme={theme} />
+            <EmailIcon 
+                socialLink={author.tag === "JoaoCamara" ? "/joaocamara/#author-contact-form" : "/thaiscampos/#author-contact-form"} 
+                theme={theme} />
         </div>
     )
 }

@@ -7,22 +7,26 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(19, 24, 44, .7);
+    background-color: rgba(19, 24, 44, .8);
     z-index: 2;
     box-sizing: border-box;
 
     &__content {
-        @include width-height(90%, 30%);
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        background-color: var(--background);
-        position: absolute;
+        @include width-height(100%, 100%);
+        background-color: black;
+        @include flex(center, column, null);
+        vertical-align: middle;
 
         @include tablet {
-            @include width-height(70%, 50%);
+            background-color: transparent;
+            @include width-height(80%, 100%);
+            margin: auto;
+        }
+
+        @include desktop {
+            background-color: transparent;
+            @include width-height(70%, 100%);
+            margin: auto;
         }
     }
 
@@ -33,10 +37,10 @@
         right: 1.6rem;
         top: 1.6rem;
         cursor: pointer;
-        @include width-height(2rem, 2rem);
+        @include width-height(3rem, 3rem);
 
         &__icon {
-            @include width-height(2rem, 2rem);
+            @include width-height(3rem, 3rem);
         }
     }
 }

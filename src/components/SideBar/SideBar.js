@@ -20,7 +20,7 @@ function SideBar({ sidebar, showSidebar, theme }) {
                 </button>
             </div>
             <div className="sidebar__search">
-                <input className="sidebar__search-input" type="search" placeholder="Search" />
+                <input className="sidebar__search-input" type="search" placeholder="Search movie" />
                 <button className="sidebar__search-icon" type="submit">
                     <img src={theme === 'light' ? searchIconBlack : searchIconSilver} alt="search-icon" className="sidebar__search-icon__icon" />
                 </button>
