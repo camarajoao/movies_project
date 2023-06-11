@@ -1,14 +1,14 @@
 import "./TrailerModal.scss";
-import closeIcon from "../../assets/icons/close-24px.svg";
+import closeIcon from "../../assets/icons/close-white.svg";
 
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player/youtube';
 import { getTrailerUrl } from "../../helpers/utils";
 import { useState, useEffect } from "react";
 
 export default function TrailerModal({ show, onClose, movieId }) {
     // states for data retrieved from API
     const [trailerUrl, setTrailerUrl] = useState(null);
-    
+
     // this runs the getData trigger function as useEffect
     useEffect(() => {
         getTrailerUrl(movieId, setTrailerUrl)
@@ -21,14 +21,15 @@ export default function TrailerModal({ show, onClose, movieId }) {
 
     return (
         <div className="modal" onClick={() => onClose()}>
-            <div className="modal__content" onClick={e => e.stopPropagation()}>
+            <div className="modal__content" >
                 <button className="modal__close" onClick={() => onClose()}><img src={closeIcon} className="modal__close__icon" alt="close icon" /></button>
-                <div className='player-wrapper'>
+                <div className='player-wrapper' onClick={e => e.stopPropagation()}>
                     <ReactPlayer
                         className='react-player'
                         url={trailerUrl}
-                        width='80%'
-                        height='80%'
+                        width='100%'
+                        height='100%'
+                        controls='true'
                     />
                 </div>
             </div>

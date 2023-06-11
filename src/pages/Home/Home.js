@@ -53,7 +53,7 @@ export default function Home({ theme }) {
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={inTheatres.results} sectionTitle={"In Theatres"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={popular.results} sectionTitle={"Popular"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={upcoming.results} sectionTitle={"Upcoming"} theme={theme} />
-            <Footer theme={theme} />
+            {/* <Footer theme={theme} /> */}
         </div>
     )
 }

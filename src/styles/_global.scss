@@ -67,60 +67,7 @@ h4 {
     }
 }
 
-p {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-input {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-a {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-    text-decoration: none;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-div {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-button {
+p, input, a, div, button, li, textarea {
     @include font-size-height-weight(1.6rem, 2.4rem, 400);
     margin: 0;
 
@@ -142,19 +89,6 @@ option {
 
     @include desktop {
         @include font-size-height-weight(1.6rem, 1.6rem, 400);
-    }
-}
-
-li {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
     }
 }
 

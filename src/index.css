@@ -10,6 +10,8 @@
   --gradient-bg: linear-gradient(to right, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 0) 65%);
   --tagline-color: #000;
   --profile-shadow: rgba(0, 0, 0, 0.1);
+  --form-button-bg-color: #111;
+  --form-button-color: #fff;
 }
 
 [data-theme='dark'] {
@@ -24,6 +26,8 @@
   --gradient-bg: linear-gradient(to right, rgba(17, 17, 17, 1) 15%, rgba(17, 17, 17, 0) 70%);
   --tagline-color: #FDC500;
   --profile-shadow: rgba(255, 255, 255, 0.2);
+  --form-button-bg-color: #FDC500;
+  --form-button-color: #111;
 }
 
 body {
