@@ -20,8 +20,8 @@ function Socials({ author, socialsClass, color, socialIconImageClass, theme }) {
                     key={index} 
                     socialIconImageClass={socialIconImageClass} />
             ))}
-            <EmailIcon 
-                socialLink={author.tag === "JoaoCamara" ? "/joaocamara/#author-contact-form" : "/thaiscampos/#author-contact-form"} 
+            <EmailIcon
+                author={author.tag}          
                 theme={theme} />
         </div>
     )

@@ -62,6 +62,11 @@
         &:focus::placeholder {
             color: transparent;
         }
+
+        &--error {
+            //box-shadow: 0 0 5px 2px $danger;
+            border: 1px solid red;
+        }
     }
 
     &__textarea {
@@ -74,6 +79,11 @@
 
         @include desktop {
             min-height: 30rem;
+        }
+
+        &--error {
+            //box-shadow: 0 0 5px 2px $danger;
+            border: 1px solid red;
         }
     }
 

@@ -6,7 +6,6 @@ import starIcon from '../../assets/icons/star-yellow.svg';
 import playIconBlack from '../../assets/icons/play-black.svg';
 import playIconYellow from '../../assets/icons/play-yellow.svg';
 import TrailerModal from '../TrailerModal/TrailerModal';
-import { set } from 'immutable';
 
 function MovieAdditionalDetails({ movieDetails, theme }) {
 
@@ -15,13 +14,6 @@ function MovieAdditionalDetails({ movieDetails, theme }) {
     const [show, setShow] = useState(false);
 
     const onClose = () => setShow(false)
-
-    // <WarehouseModal
-    //     onClose={onClose}
-    //     show={show}
-    //     warehouse={warehouse}
-    //     id={warehouse.id}
-    // />
 
     return (
         <div className='movie__rating-trailer'>

@@ -1,11 +1,9 @@
 import "./Home.scss";
 
-import { useState, useEffect } from "react";
-
-
 import Hero from "../../components/Hero/Hero";
 import ListOfMovies from "../../components/ListOfMovies/ListOfMovies";
-import Footer from "../../components/Footer/Footer";
+
+import { useState, useEffect } from "react";
 import { getRequestParams, getDataFromAPI } from "../../helpers/utils"
 
 export default function Home({ theme }) {
@@ -19,9 +17,9 @@ export default function Home({ theme }) {
     // setting the request params for each of the API endpoints
     const detailsParams = getRequestParams('https://api.themoviedb.org/3/configuration');
     const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en')
-    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1')
-    const popularParams = getRequestParams('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
-    const upcomingParams = getRequestParams('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1');
+    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?with_original_language=en&page=1&adult=false')
+    const popularParams = getRequestParams('https://api.themoviedb.org/3/movie/popular?with_original_language=en&page=1&adult=false');
+    const upcomingParams = getRequestParams('https://api.themoviedb.org/3/movie/upcoming?with_original_language=en&page=1&adult=false');
 
     // function below triggers the helper function
     const getDetails = () => getDataFromAPI(detailsParams, setDetails)
@@ -53,7 +51,6 @@ export default function Home({ theme }) {
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={inTheatres.results} sectionTitle={"In Theatres"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={popular.results} sectionTitle={"Popular"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={upcoming.results} sectionTitle={"Upcoming"} theme={theme} />
-            {/* <Footer theme={theme} /> */}
         </div>
     )
 }
