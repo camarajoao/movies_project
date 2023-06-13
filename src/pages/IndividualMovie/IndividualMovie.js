@@ -10,7 +10,6 @@ import MovieOverview from '../../components/MovieOverview/MovieOverview';
 import TopCast from '../../components/TopCast/TopCast';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import ListOfMovies from '../../components/ListOfMovies/ListOfMovies';
-import Footer from '../../components/Footer/Footer';
 
 import { getRequestParams, getDataFromAPI } from "../../helpers/utils";
 
@@ -60,7 +59,6 @@ function IndividualMovie({ theme }) {
             <TopCast theme={theme} imageBaseUrl={imageBaseUrl} cast={topCast.cast} />
             <MovieDetails movieDetails={movieDetails} crew={topCast.crew} />
             <ListOfMovies imagesBaseUrl={imageBaseUrl} movies={recommended.results} sectionTitle={"You may also like"} theme={theme} />
-            {/* <Footer theme={theme} /> */}
         </div>
     )
 }

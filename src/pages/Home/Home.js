@@ -1,11 +1,9 @@
 import "./Home.scss";
 
-import { useState, useEffect } from "react";
-
-
 import Hero from "../../components/Hero/Hero";
 import ListOfMovies from "../../components/ListOfMovies/ListOfMovies";
-import Footer from "../../components/Footer/Footer";
+
+import { useState, useEffect } from "react";
 import { getRequestParams, getDataFromAPI } from "../../helpers/utils"
 
 export default function Home({ theme }) {
@@ -53,7 +51,6 @@ export default function Home({ theme }) {
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={inTheatres.results} sectionTitle={"In Theatres"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={popular.results} sectionTitle={"Popular"} theme={theme} />
             <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={upcoming.results} sectionTitle={"Upcoming"} theme={theme} />
-            {/* <Footer theme={theme} /> */}
         </div>
     )
 }

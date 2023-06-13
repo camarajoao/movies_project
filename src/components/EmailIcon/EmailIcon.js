@@ -8,12 +8,7 @@ import emailIconBlack from '../../assets/icons/envelope-at-black.svg'
 import emailIconYellow from '../../assets/icons/envelope-at-yellow.svg'
 import EmailModal from '../EmailModal/EmailModal';
 
-function EmailIcon({ socialLink, closeContent, theme }) {
-
-    const handleClick = (e) => {
-        e.stopPropagation();
-        closeContent();
-    }
+function EmailIcon({ theme, author }) {
 
     const [show, setShow] = useState(false);
 
@@ -24,7 +19,7 @@ function EmailIcon({ socialLink, closeContent, theme }) {
             <Link onClick={() => setShow(true)}>
                 <img src={theme === 'light' ? emailIconBlack : emailIconYellow} alt={'closed envelope icon in gold'} className='social__icon' />
             </Link>
-            <EmailModal show={show} onClose={onClose} theme={theme} />
+            <EmailModal show={show} onClose={onClose} theme={theme} sendTo={author.toUpperCase()} />
         </>
     )
 }

@@ -32,7 +32,7 @@ function MovieDetails({ movieDetails, crew }) {
             </div>
             <div className='moviedetails__categories'>
                 <h4>Official site:&nbsp;</h4>
-                <a href={movieDetails.homepage} target='_blank'>{movieDetails.homepage}</a>
+                <a href={movieDetails.homepage} target='_blank' rel='noreferrer'>{movieDetails.homepage}</a>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Genres:&nbsp;</h4>

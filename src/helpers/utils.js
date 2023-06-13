@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Function that receives an url and returns an object with the request params for the tmdb API.
 export function getRequestParams(url) {
@@ -85,6 +87,33 @@ export function timeConvert(totalMinutes) {
     var hours = Math.floor(totalMinutes / 60);
     var minutes = totalMinutes % 60;
     return `${hours}h ${minutes}m`;
+}
+
+
+export function sendSuccess() {
+    toast.success('Message sent!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+}
+
+export function sendError() {
+   toast.error('Sorry, an error occurred', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 }
 
 
