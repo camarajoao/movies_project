@@ -9,13 +9,13 @@ import searchIconSilver from '../../assets/icons/search-silver.svg';
 import searchIconBlack from '../../assets/icons/search-black.svg';
 
 
-function SideBar({ sidebar, showSidebar, theme }) {
+function SideBar({ sidebar, closeSidebar, theme }) {
 
     return (
         <div className={sidebar ? "sidebar active" : "sidebar"} >
             <div className="sidebar__header">
-                <Link to='/'><img className="sidebar__logo" src={theme === 'light' ? logoMultiColor : logoYellow} alt="just movie logo" /></Link>
-                <button className="sidebar__close-button" onClick={showSidebar}>
+                <Link to='/'><img className="sidebar__logo" src={theme === 'light' ? logoMultiColor : logoYellow} alt="just movie logo" onClick={closeSidebar} /></Link>
+                <button className="sidebar__close-button" onClick={closeSidebar}>
                     <img className="sidebar__close-button__icon" src={theme === 'light' ? closeIconBlack : closeIconYellow} alt="close button" />
                 </button>
             </div>

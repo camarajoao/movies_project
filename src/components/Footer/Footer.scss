@@ -49,12 +49,14 @@
 
     &__header {
         margin-bottom: .8rem;
+        color: var(--text-color);
     }
 
     &__comment {
         @include font-size-height-weight(1.4rem, 2rem, 400);
         text-align: center;
         margin-top: .8rem;
+        color: var(--text-color);
     }
 
     &__footerauthorsocials {

@@ -87,6 +87,7 @@
         @include flex(center, null);
         border: none;
         background-color: transparent;
+        cursor: pointer;
 
         @include tablet {
             @include width-height(2.5rem, 2.5rem);
