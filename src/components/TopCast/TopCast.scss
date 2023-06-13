@@ -19,7 +19,7 @@
 
     &__profile-picture {
         @extend .individual-container__picture;
-        height: 15rem;
+        height: 20rem;
         object-fit: cover;
         object-position: 0 top;
     }

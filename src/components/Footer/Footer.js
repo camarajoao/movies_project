@@ -14,7 +14,7 @@ function Footer({ theme }) {
   return (
     <footer className='footer'>
       <ToastContainer />
-      <Link to='./' className='footer__back-to-top' onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth", }); }}>
+      <Link  className='footer__back-to-top' onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth", }); }}>
         <img src={theme === 'light' ? backToTopBlack : backToTopYellow} className='footer__back-to-top-image' />
       </Link>
       <p className='footer__header'>Designed and Developed by</p>

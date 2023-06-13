@@ -9,14 +9,16 @@ function HeaderMenuButton({ theme }) {
 
     const [sidebar, setSidebar] = useState(false);
 
-    const showSidebar = () => setSidebar(!sidebar);
+    const showSidebar = () => setSidebar(true);
+
+    const closeSidebar = () => setSidebar(false);
 
     return (
         <>
             <button className="header__menu" onClick={showSidebar}>
                 <img src={theme === 'light' ? menuIconBlack : menuIconYellow} className="header__menu__icon" alt='menu icon' />
             </button>
-            <SideBar sidebar={sidebar} showSidebar={showSidebar} theme={theme} />
+            <SideBar sidebar={sidebar} theme={theme} closeSidebar={closeSidebar} />
         </>
     )
 }
