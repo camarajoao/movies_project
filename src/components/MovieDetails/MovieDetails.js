@@ -28,31 +28,31 @@ function MovieDetails({ movieDetails, crew }) {
             <h2 className='moviedetails__header'>Details</h2>
             <div className='moviedetails__categories'>
                 <h4>Release date:&nbsp;</h4>
-                <p>{movieDetails.release_date}</p>
+                <p>{movieDetails.release_date ? movieDetails.release_date : 'not available'}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Official site:&nbsp;</h4>
-                <a href={movieDetails.homepage} target='_blank' rel='noreferrer'>{movieDetails.homepage}</a>
+                {movieDetails.homepage ? <a href={movieDetails.homepage} target='_blank' rel='noreferrer'>{movieDetails.homepage}</a> : 'not available'}
             </div>
             <div className='moviedetails__categories'>
                 <h4>Genres:&nbsp;</h4>
-                <p>{genres.join(', ')}</p>
+                <p>{genres.length > 0 ? genres.join(', ') : 'not available'}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Languages:&nbsp;</h4>
-                <p>{languages.join(', ')}</p>
+                <p>{languages.length > 0 ? languages.join(', '): 'not available'}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Director:&nbsp;</h4>
-                <p>{directors.join(', ')}</p>
+                <p>{directors.length > 0 ? directors.join(', ') : 'not available'}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Budget:&nbsp;</h4>
-                <p>{USDollar.format(movieDetails.budget)}</p>
+                <p>{movieDetails.budget > 0 ? USDollar.format(movieDetails.budget) : 'not available'}</p>
             </div>
             <div className='moviedetails__categories'>
                 <h4>Revenue:&nbsp;</h4>
-                <p>{USDollar.format(movieDetails.revenue)}</p>
+                <p>{movieDetails.revenue > 0 ? USDollar.format(movieDetails.revenue): 'not available'}</p>
             </div>
         </div>
     )

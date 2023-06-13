@@ -9,7 +9,7 @@ function MovieHeader({ movieDetails }) {
     <div className='movie-header'>
           <h1>{movieDetails.original_title}</h1>
           <div className='movie-header__details'>
-              <p>{movieDetails.release_date.slice(0, 4)}</p>
+              <p>{movieDetails.release_date ? movieDetails.release_date.slice(0, 4) : 'not available'}</p>
               <p className='movie-header__runtime'>{movieRuntime}</p>
           </div>
     </div>
