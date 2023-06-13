@@ -89,9 +89,9 @@ export function timeConvert(totalMinutes) {
     return `${hours}h ${minutes}m`;
 }
 
-
-export function sendSuccess() {
-    toast.success('Message sent!', {
+// function that displays a success toast with the message passed in the parameters
+export function sendSuccess(message) {
+    toast.success(message, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -103,8 +103,10 @@ export function sendSuccess() {
     });
 }
 
-export function sendError() {
-   toast.error('Sorry, an error occurred', {
+
+// function that displays an error toast with the message passed in the parameters
+export function sendError(message) {
+   toast.error(message, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

@@ -77,11 +77,11 @@ function EmailModal({ show, onClose, sendTo }) {
 
             emailjs.sendForm(receiver.emailServiceId, 'contact_portfolio', e.target, receiver.emailServiceKey)
                 .then((result) => {
-                    sendSuccess();
+                    sendSuccess('Message sent!');
                     resetForm(e);
                 })
                 .catch((error) => {
-                    sendError();
+                    sendError('Sorry, an error occurred.');
                 });
             
             onClose()
