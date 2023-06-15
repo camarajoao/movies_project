@@ -6,15 +6,17 @@
     margin: 1.6rem 0;
 
     &-input {
-        @include width-height(100%, 4rem);
+        @include width-height(100%, null);
         border-radius: .4rem;
         padding-left: 4rem;
         border: 1px solid $movie-light-black;
         background-color: var(--input-bg-color);
         color: var(--input-text-color);
+        @include font-size-height-weight(1.6rem, 3.2rem, 400);
 
         &::placeholder {
             color: var(--input-placeholder-color);
+            @include font-size-height-weight(1.6rem, 3.2rem, 400);
         }
 
         &:focus::placeholder {
@@ -33,7 +35,7 @@
         background-color: transparent;
         border: none;
         position: absolute;
-        top: 1rem;
+        top: .7rem;
         left: 1rem;
         padding: 0;
 

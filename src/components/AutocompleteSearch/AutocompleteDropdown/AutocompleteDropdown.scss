@@ -4,24 +4,65 @@
 .dropdown {
     display: block;
 
-    &-content {
-        background-color: green;
 
-        &--item {
-            height: 20px;
-            font-size: medium;
-            color:white;
-            width: 100%;
+
+    &__list {
+        background-color: var(--input-bg-color);
+        margin-top: .8rem;
+        border-radius: .4rem;
+        border: 1px solid var(--header-border-bottom);
+
+        &__item {
+            margin: .8rem;
+            list-style-type: none;
+
+            &__link {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__movie {
+        @include flex(null, row);
+        color: var(--text-color);
+
+        &__title {
+            margin-right: .8rem;
+
+            @include tablet {
+                @include font-size-height-weight(1.6rem, 2.4rem, 600);
+            }
+
+            @include desktop {
+                @include font-size-height-weight(1.8rem, 2.6rem, 600);
+            }
+
+        }
+
+        &__poster {
+            width: 8rem;
+            border-radius: .8rem;
+            margin-right: .8rem;
         }
     }
 
     &-error {
-        background-color: red;
-        height: 20px;
-        font-size: medium;
-        color:white;
+        background-color: var(--input-bg-color);
+        color: var(--text-color);
+        // height: 20px;
         width: 100%;
+        margin-top: .8rem;
+        padding: .4rem;
+        box-sizing: border-box;
+        border-radius: .4rem;
+
+        @include tablet {
+            @include font-size-height-weight(1.6rem, 2.4rem, 400);
+        }
+
+        @include desktop {
+            @include font-size-height-weight(1.8rem, 2.6rem, 400);
+        }
 
     }
-
 }
