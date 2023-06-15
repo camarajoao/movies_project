@@ -13,8 +13,12 @@
         border: 1px solid var(--header-border-bottom);
 
         &__item {
-            margin: .8rem;
+            padding: .4rem .8rem;
             list-style-type: none;
+
+            &:hover {
+                background-color: var(--secondary-background-color);
+            }
 
             &__link {
                 text-decoration: none;
@@ -25,6 +29,7 @@
     &__movie {
         @include flex(null, row);
         color: var(--text-color);
+        padding: .4rem 0;
 
         &__title {
             margin-right: .8rem;
