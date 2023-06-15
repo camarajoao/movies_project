@@ -3,19 +3,30 @@ import { Link } from "react-router-dom";
 
 function AutocompleteDropdown({ theme, results, hasTerm }) {
 
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
+
+    console.log(results);
+
     return (
         <div className="dropdown">
             {!results ? null
-            : results.length > 0 ? 
-                <div className="dropdown-content">
-                    {results.map((movie, index) => (
-                        <Link to={`movies/${movie.id}`} key={index} reloadDocument>{movie.title}</Link>
-                    ))}
-                </div>
-            :
-                hasTerm ? <p className="dropdown-error">No results found</p>
-            :
-            null 
+                : results.length > 0 ?
+                    <ul className="dropdown__list">
+                        {results.map((movie, index) => (
+                            <li className="dropdown__list__item">
+                                <Link to={`movies/${movie.id}`} key={index} reloadDocument className="dropdown__list__item__link">
+                                    <div className="dropdown__movie">
+                                        <img src={imageBaseUrl + movie.poster_path} className="dropdown__movie__poster" />
+                                        <h4 className="dropdown__movie__title">{movie.title}<span>{movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null}</span></h4>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                    :
+                    hasTerm ? <p className="dropdown-error">No results found</p>
+                        :
+                        null
             }
 
         </div>
