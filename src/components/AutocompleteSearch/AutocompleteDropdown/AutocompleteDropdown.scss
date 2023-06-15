@@ -1,0 +1,27 @@
+@use "../../../styles/global.scss" as *;
+@use "../../../styles/mixins" as *;
+
+.dropdown {
+    display: block;
+
+    &-content {
+        background-color: green;
+
+        &--item {
+            height: 20px;
+            font-size: medium;
+            color:white;
+            width: 100%;
+        }
+    }
+
+    &-error {
+        background-color: red;
+        height: 20px;
+        font-size: medium;
+        color:white;
+        width: 100%;
+
+    }
+
+}
