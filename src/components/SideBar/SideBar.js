@@ -1,15 +1,26 @@
 import "./SideBar.scss";
 import { Link } from "react-router-dom";
+import { useRef, useEffect, useState } from 'react';
+
+import AutocompleteSearch from "../AutocompleteSearch/AutocompleteSearch"
 
 import logoMultiColor from "../../assets/logo/just-movies-color-on-transparent-background-multi-color.svg";
 import logoYellow from "../../assets/logo/just-movies-color-on-transparent-background-yellow.svg";
 import closeIconBlack from "../../assets/icons/close-black.svg";
 import closeIconYellow from "../../assets/icons/close-yellow.svg";
-import searchIconSilver from '../../assets/icons/search-silver.svg';
-import searchIconBlack from '../../assets/icons/search-black.svg';
 
 
 function SideBar({ sidebar, closeSidebar, theme }) {
+
+    const myRef = useRef(null);
+
+    const [sidebarSearchRoot, setSidebarSearchRoot] = useState(null);
+
+    useEffect(() => {
+        setSidebarSearchRoot(myRef.current);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [sidebarSearchRoot]);
+
 
     return (
         <div className={sidebar ? "sidebar active" : "sidebar"} >
@@ -19,11 +30,8 @@ function SideBar({ sidebar, closeSidebar, theme }) {
                     <img className="sidebar__close-button__icon" src={theme === 'light' ? closeIconBlack : closeIconYellow} alt="close button" />
                 </button>
             </div>
-            <div className="sidebar__search">
-                <input className="sidebar__search-input" type="search" placeholder="Search movie" />
-                <button className="sidebar__search-icon" type="submit">
-                    <img src={theme === 'light' ? searchIconBlack : searchIconSilver} alt="search-icon" className="sidebar__search-icon__icon" />
-                </button>
+            <div className="sidebar__autocomplete" ref={myRef}>
+                {sidebarSearchRoot ? < AutocompleteSearch theme={theme} /> : null}
             </div>
         </div >
     )
