@@ -14,8 +14,8 @@ import ListOfMovies from '../../components/ListOfMovies/ListOfMovies';
 import { getRequestParams, getDataFromAPI } from "../../helpers/utils";
 
 function IndividualMovie({ theme }) {
-
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/original'
+    // retrieve imagesBaseUrl from local storage
+    const imagesBaseUrl = localStorage.getItem('imagesBaseUrl')
     
     // states for data retrieved from API
     const [movieDetails, setMovieDetails] = useState(null);
@@ -33,16 +33,11 @@ function IndividualMovie({ theme }) {
     const topCastParams = getRequestParams(topCastUrl);
     const recommendedParams = getRequestParams(recommendedUrl);
 
-    // function below triggers the helper function
-    const getMovieDetails = () => getDataFromAPI(movieDetailsParams, setMovieDetails);
-    const getTopCast = () => getDataFromAPI(topCastParams, setTopCast);
-    const getRecommended = () => getDataFromAPI(recommendedParams, setRecommended)
-
-    // this runs the getData trigger function as useEffect
+    // this runs functions to get all necessary data from the API as useEffect
     useEffect(() => {
-        getMovieDetails()
-        getTopCast()
-        getRecommended()
+        getDataFromAPI(movieDetailsParams, setMovieDetails);
+        getDataFromAPI(topCastParams, setTopCast);
+        getDataFromAPI(recommendedParams, setRecommended)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -50,17 +45,17 @@ function IndividualMovie({ theme }) {
         return
     };
 
-    const recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en")
+    const recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en");
 
     return (
         <div className='individual-movie'>
             <MovieHeader movieDetails={movieDetails} />
-            <MoviePoster movieDetails={movieDetails} imageBaseUrl={imageBaseUrl} />
+            <MoviePoster movieDetails={movieDetails} imageBaseUrl={imagesBaseUrl} />
             <MovieAdditionalDetails movieDetails={movieDetails} theme={theme} />
             <MovieOverview movieDetails={movieDetails} />
-            <TopCast theme={theme} imageBaseUrl={imageBaseUrl} cast={topCast.cast} />
+            <TopCast theme={theme} imageBaseUrl={imagesBaseUrl} cast={topCast.cast} />
             <MovieDetails movieDetails={movieDetails} crew={topCast.crew} />
-            <ListOfMovies imagesBaseUrl={imageBaseUrl} movies={recommendationList} sectionTitle={"You may also like"} theme={theme} />
+            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={recommendationList} sectionTitle={"You may also like"} theme={theme} />
         </div>
     )
 }

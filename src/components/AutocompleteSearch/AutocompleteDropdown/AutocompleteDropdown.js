@@ -1,11 +1,9 @@
 import "./AutocompleteDropdown.scss";
 import { Link } from "react-router-dom";
 
-function AutocompleteDropdown({ theme, results, hasTerm }) {
+function AutocompleteDropdown({ results, hasTerm }) {
 
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
-
-    console.log(results);
+    const imagesBaseUrl = localStorage.getItem('imagesBaseUrl');
 
     return (
         <div className="dropdown">
@@ -16,7 +14,7 @@ function AutocompleteDropdown({ theme, results, hasTerm }) {
                             <li className="dropdown__list__item">
                                 <Link to={`movies/${movie.id}`} key={index} reloadDocument className="dropdown__list__item__link">
                                     <div className="dropdown__movie">
-                                        <img src={imageBaseUrl + movie.poster_path} className="dropdown__movie__poster" />
+                                        <img src={imagesBaseUrl + movie.poster_path} className="dropdown__movie__poster" />
                                         <h4 className="dropdown__movie__title">{movie.title}<span>{movie.release_date ? ` (${movie.release_date.slice(0, 4)})` : null}</span></h4>
                                     </div>
                                 </Link>
