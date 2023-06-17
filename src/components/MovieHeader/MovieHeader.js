@@ -5,8 +5,6 @@ function MovieHeader({ movieDetails }) {
 
   const movieRuntime = timeConvert(movieDetails.runtime);
 
-  console.log(movieDetails)
-
   return (
     <div className='movie-header'>
           <h1>{movieDetails.original_title}</h1>

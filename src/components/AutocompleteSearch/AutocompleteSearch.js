@@ -31,6 +31,8 @@ function AutocompleteSearch({ theme }) {
     const onInput = (e) => {
         setSearchTerm(e.target.value)
     }
+
+    const results = searchResults ? searchResults.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path).slice(0,10) : null
     
     return (
         <div className="search">
@@ -38,7 +40,7 @@ function AutocompleteSearch({ theme }) {
             <button className="search-icon" type="submit">
                 <img src={theme === 'light' ? searchIconBlack : searchIconSilver} alt="search-icon" className="search-icon__icon" />
             </button>
-            <AutocompleteDropdown results={searchResults ? searchResults.results.slice(0,10): null} hasTerm={searchTerm.length > 0} />
+            <AutocompleteDropdown results={results} hasTerm={searchTerm.length > 0} />
         </div>
     )
 }

@@ -39,13 +39,13 @@ function IndividualMovie({ theme }) {
         getDataFromAPI(topCastParams, setTopCast);
         getDataFromAPI(recommendedParams, setRecommended)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     if (!movieDetails || !topCast || !recommended) {
         return
     };
 
-    const recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en");
+    const recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path);
 
     return (
         <div className='individual-movie'>
