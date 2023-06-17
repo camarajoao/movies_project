@@ -12,12 +12,11 @@ import closeIconYellow from "../../assets/icons/close-yellow.svg";
 
 function SideBar({ sidebar, closeSidebar, theme }) {
 
-    const myRef = useRef(null);
-
+    // get a reference to the root element where the AutocompleteSearch will be rendered
+    const searchRootRef = useRef(null);
     const [sidebarSearchRoot, setSidebarSearchRoot] = useState(null);
-
     useEffect(() => {
-        setSidebarSearchRoot(myRef.current);
+        setSidebarSearchRoot(searchRootRef.current);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sidebarSearchRoot]);
 
@@ -30,8 +29,8 @@ function SideBar({ sidebar, closeSidebar, theme }) {
                     <img className="sidebar__close-button__icon" src={theme === 'light' ? closeIconBlack : closeIconYellow} alt="close button" />
                 </button>
             </div>
-            <div className="sidebar__autocomplete" ref={myRef}>
-                {sidebarSearchRoot ? < AutocompleteSearch theme={theme} /> : null}
+            <div className="sidebar__autocomplete" ref={searchRootRef}>
+                {sidebarSearchRoot ? < AutocompleteSearch theme={theme} sidebarState={sidebar}/> : null}
             </div>
         </div >
     )
