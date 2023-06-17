@@ -9,7 +9,7 @@ function MovieDetails({ movieDetails, crew }) {
 
     const director = crew.filter((item) => (
         item.job === "Director"
-    ))
+    ));
 
     const genres = movieDetails.genres.map((genre) => (
         genre.name

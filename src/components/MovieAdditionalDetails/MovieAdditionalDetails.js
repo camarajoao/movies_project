@@ -18,12 +18,12 @@ function MovieAdditionalDetails({ movieDetails, theme }) {
     return (
         <div className='movie__rating-trailer'>
             <div className='movie__rating'>
-                <img src={starIcon} className='movie__rating__star' />
+                <img src={starIcon} className='movie__rating__star' alt={'star icon'} />
                 <p className='movie__rating__rate'>{`${movieRating}/10`}</p>
             </div>
             <div className="movie__rating__pipe"></div>
             <button className="movie__rating__play" onClick={() => setShow(true)}>
-                <img src={theme === 'light' ? playIconBlack : playIconYellow} className="movie__rating__play__icon" />
+                <img src={theme === 'light' ? playIconBlack : playIconYellow} className="movie__rating__play__icon" alt={'play icon'}/>
                 <p className='movie__rating__play__text'>Play Trailer</p>
             </button>
             <TrailerModal 

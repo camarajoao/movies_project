@@ -42,7 +42,7 @@ export async function getDataFromAPI(params, setData) {
 // retrieved from API. It makes the request and uses the setData function to set the response data to the respective variable.
 export async function getTrailerUrl(movieId, setData) {
     // request url -> use movie ID from args
-    const reqUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`
+    const reqUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
     // setting the request params for each of the API endpoints
     const trailerParams = getRequestParams(reqUrl);
 

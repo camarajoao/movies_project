@@ -7,43 +7,34 @@ import { useState, useEffect } from "react";
 import { getRequestParams, getDataFromAPI } from "../../helpers/utils"
 
 export default function Home({ theme }) {
+    // retrieve imagesBaseUrl from local storage
+    const imagesBaseUrl = localStorage.getItem('imagesBaseUrl'); 
+
     // states for data retrieved from API
-    const [details, setDetails] = useState(null);
     const [genreList, setGenreList] = useState(null);
     const [inTheatres, setInTheatres] = useState(null);
     const [popular, setPopular] = useState(null);
     const [upcoming, setUpcoming] = useState(null);
 
     // setting the request params for each of the API endpoints
-    const detailsParams = getRequestParams('https://api.themoviedb.org/3/configuration');
-    const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en')
-    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?with_original_language=en&page=1&adult=false')
+    const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en');
+    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?with_original_language=en&page=1&adult=false');
     const popularParams = getRequestParams('https://api.themoviedb.org/3/movie/popular?with_original_language=en&page=1&adult=false');
     const upcomingParams = getRequestParams('https://api.themoviedb.org/3/movie/upcoming?with_original_language=en&page=1&adult=false');
 
-    // function below triggers the helper function
-    const getDetails = () => getDataFromAPI(detailsParams, setDetails)
-    const getGenreList = () => getDataFromAPI(genreListParams, setGenreList)
-    const getInTheatres = () => getDataFromAPI(inTheatresParams, setInTheatres)
-    const getPopular = () => getDataFromAPI(popularParams, setPopular)
-    const getUpcoming = () => getDataFromAPI(upcomingParams, setUpcoming)
-
-    // this runs the getData trigger function as useEffect
+    // this runs functions to get all necessary data from the API as useEffect
     useEffect(() => {
-        getDetails()
-        getGenreList()
-        getInTheatres()
-        getPopular()
-        getUpcoming()
+        getDataFromAPI(genreListParams, setGenreList);
+        getDataFromAPI(inTheatresParams, setInTheatres);
+        getDataFromAPI(popularParams, setPopular);
+        getDataFromAPI(upcomingParams, setUpcoming);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // wait until all requests are fulfilled to render page
-    if (!details || !genreList || !inTheatres || !popular || !upcoming) {
+    if (!genreList || !inTheatres || !popular || !upcoming) {
         return
     }
-    // set the images base url with data from API
-    const imagesBaseUrl = `${details.images.secure_base_url}original`;
 
     return (
         <div className="home">

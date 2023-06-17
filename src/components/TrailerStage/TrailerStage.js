@@ -1,11 +1,11 @@
 // child of Home page
-import './TrailerStage.scss'
+import './TrailerStage.scss';
 
 import { useState, useEffect } from "react";
-import ReactPlayer from 'react-player/lazy'
+import ReactPlayer from 'react-player/lazy';
 
 import { getTrailerUrl } from "../../helpers/utils";
-import movieTheatre from '../../assets/images/favpng_theater-drapes-and-stage-curtains-theatre.png'
+import movieTheatre from '../../assets/images/favpng_theater-drapes-and-stage-curtains-theatre.png';
 
 function TrailerStage(props) {
     // states for data retrieved from API
@@ -13,7 +13,7 @@ function TrailerStage(props) {
 
     // this runs the getData trigger function as useEffect
     useEffect(() => {
-        getTrailerUrl(props.movieId, setTrailerUrl)
+        getTrailerUrl(props.movieId, setTrailerUrl);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.movieId]);
 
@@ -24,7 +24,7 @@ function TrailerStage(props) {
     
     return (
         <div className='trailerstage__background'>
-            <img src={movieTheatre} className='trailerstage__image' />
+            <img src={movieTheatre} className='trailerstage__image' alt="theatre red curtains"/>
             <div className='trailerstage'>
                 <div className='player-wrapper' onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
                     <ReactPlayer

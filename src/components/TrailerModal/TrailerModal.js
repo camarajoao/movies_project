@@ -11,12 +11,12 @@ export default function TrailerModal({ show, onClose, movieId }) {
 
     // this runs the getData trigger function as useEffect
     useEffect(() => {
-        getTrailerUrl(movieId, setTrailerUrl)
+        getTrailerUrl(movieId, setTrailerUrl);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId]);
 
     if (show === false) {
-        return null
+        return
     }
 
     return (

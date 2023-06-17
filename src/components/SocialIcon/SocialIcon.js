@@ -1,5 +1,5 @@
 //child of Socials
-import './SocialIcon.scss'
+import './SocialIcon.scss';
 import { Link } from 'react-router-dom';
 
 function SocialIcon({ socialIcon, socialLink, socialIconLinkClass, socialIconImageClass, altText }) {
