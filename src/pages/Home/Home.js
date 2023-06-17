@@ -8,7 +8,7 @@ import { getRequestParams, getDataFromAPI } from "../../helpers/utils"
 
 export default function Home({ theme }) {
     // retrieve imagesBaseUrl from local storage
-    const imagesBaseUrl = localStorage.getItem('imagesBaseUrl') 
+    const imagesBaseUrl = localStorage.getItem('imagesBaseUrl'); 
 
     // states for data retrieved from API
     const [genreList, setGenreList] = useState(null);

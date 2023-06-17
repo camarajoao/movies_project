@@ -31,17 +31,14 @@ function App() {
   // this runs functions to get all necessary data from the API as useEffect
   useEffect(() => {
     getDataFromAPI(detailsParams, setDetails)
-    if(details) {
-      // set the images base url with data from API and save it to the local storage
-      localStorage.setItem('imagesBaseUrl', `${details.images.secure_base_url}original`)
-    } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [details])
-
-// wait until all API requests are fulfilled to render page
-if (!details) {
-    return
-}
+  }, [])
+  // wait until all API requests are fulfilled to continue
+  if (!details) {
+      return
+  }
+  // save imageBaseUrl to local storage
+  localStorage.setItem('imagesBaseUrl', `${details.images.secure_base_url}original`)
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

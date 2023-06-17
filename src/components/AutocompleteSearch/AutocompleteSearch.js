@@ -47,7 +47,7 @@ function AutocompleteSearch({ theme,sidebarState }) {
         }
     }
 
-    const results = searchResults ? searchResults.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path).slice(0,10) : null
+    const results = searchResults ? searchResults.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path && movie.backdrop_path).slice(0,10) : null
     
     return (
         <div className="search">
