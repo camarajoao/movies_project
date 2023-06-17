@@ -17,17 +17,17 @@ export default function Home({ theme }) {
     const [upcoming, setUpcoming] = useState(null);
 
     // setting the request params for each of the API endpoints
-    const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en')
-    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?with_original_language=en&page=1&adult=false')
+    const genreListParams = getRequestParams('https://api.themoviedb.org/3/genre/movie/list?language=en');
+    const inTheatresParams = getRequestParams('https://api.themoviedb.org/3/movie/now_playing?with_original_language=en&page=1&adult=false');
     const popularParams = getRequestParams('https://api.themoviedb.org/3/movie/popular?with_original_language=en&page=1&adult=false');
     const upcomingParams = getRequestParams('https://api.themoviedb.org/3/movie/upcoming?with_original_language=en&page=1&adult=false');
 
     // this runs functions to get all necessary data from the API as useEffect
     useEffect(() => {
-        getDataFromAPI(genreListParams, setGenreList)
-        getDataFromAPI(inTheatresParams, setInTheatres)
-        getDataFromAPI(popularParams, setPopular)
-        getDataFromAPI(upcomingParams, setUpcoming)
+        getDataFromAPI(genreListParams, setGenreList);
+        getDataFromAPI(inTheatresParams, setInTheatres);
+        getDataFromAPI(popularParams, setPopular);
+        getDataFromAPI(upcomingParams, setUpcoming);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

@@ -2,7 +2,7 @@ import "./SideBar.scss";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from 'react';
 
-import AutocompleteSearch from "../AutocompleteSearch/AutocompleteSearch"
+import AutocompleteSearch from "../AutocompleteSearch/AutocompleteSearch";
 
 import logoMultiColor from "../../assets/logo/just-movies-color-on-transparent-background-multi-color.svg";
 import logoYellow from "../../assets/logo/just-movies-color-on-transparent-background-yellow.svg";

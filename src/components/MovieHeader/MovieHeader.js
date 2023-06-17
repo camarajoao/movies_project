@@ -1,5 +1,5 @@
 import './MovieHeader.scss';
-import { timeConvert } from "../../helpers/utils"
+import { timeConvert } from "../../helpers/utils";
 
 function MovieHeader({ movieDetails }) {
 

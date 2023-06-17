@@ -8,7 +8,7 @@ import EmailIcon from '../EmailIcon/EmailIcon';
 
 function Socials({ author, socialsClass, color, socialIconImageClass, theme }) {
 
-    const socials = getSocials(author.tag, color)
+    const socials = getSocials(author.tag, color);
 
     return (
         <div className={socialsClass}>

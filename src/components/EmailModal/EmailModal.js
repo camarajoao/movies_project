@@ -89,7 +89,7 @@ function EmailModal({ show, onClose, sendTo }) {
     };
 
     if (show === false) {
-        return null
+        return
     }
 
     return (

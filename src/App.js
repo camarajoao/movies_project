@@ -30,7 +30,7 @@ function App() {
   const detailsParams = getRequestParams('https://api.themoviedb.org/3/configuration');
   // this runs functions to get all necessary data from the API as useEffect
   useEffect(() => {
-    getDataFromAPI(detailsParams, setDetails)
+    getDataFromAPI(detailsParams, setDetails);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   // wait until all API requests are fulfilled to continue
@@ -38,7 +38,7 @@ function App() {
       return
   }
   // save imageBaseUrl to local storage
-  localStorage.setItem('imagesBaseUrl', `${details.images.secure_base_url}original`)
+  localStorage.setItem('imagesBaseUrl', `${details.images.secure_base_url}original`);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

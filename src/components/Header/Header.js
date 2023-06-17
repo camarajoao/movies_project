@@ -4,8 +4,8 @@ import logoMultiColor from "../../assets/logo/just-movies-color-on-transparent-b
 import logoYellow from "../../assets/logo/just-movies-color-on-transparent-background-yellow.svg";
 import { Link } from "react-router-dom";
 import HeaderMenuButton from '../HeaderMenuButton/HeaderMenuButton';
-import sun from '../../assets/icons/sun.svg'
-import moon from '../../assets/icons/moon.svg'
+import sun from '../../assets/icons/sun.svg';
+import moon from '../../assets/icons/moon.svg';
 
 export default function Header({ theme, toggleTheme }) {
     return (

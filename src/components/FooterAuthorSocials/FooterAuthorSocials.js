@@ -1,7 +1,7 @@
 //child of Footer
-import './FooterAuthorSocials.scss'
+import './FooterAuthorSocials.scss';
 
-import Socials from '../Socials/Socials'
+import Socials from '../Socials/Socials';
 
 function FooterAuthorSocials({ author, theme }) {
     return (

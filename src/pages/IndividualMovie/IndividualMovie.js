@@ -25,9 +25,9 @@ function IndividualMovie({ theme }) {
 
     // getting movie data based on id in params
     const { movieId } = useParams();
-    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en`
-    const topCastUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en`
-    const recommendedUrl = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en&page=1&adult=false`
+    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en`;
+    const topCastUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en`;
+    const recommendedUrl = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en&page=1&adult=false`;
     
     // setting the request params for the API endpoints
     const movieDetailsParams = getRequestParams(movieDetailsUrl);

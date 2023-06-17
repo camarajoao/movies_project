@@ -1,5 +1,5 @@
 // child of Home page
-import './Hero.scss'
+import './Hero.scss';
 import HeroPoster from "../../components/HeroPoster/HeroPoster";
 import TrailerStage from '../TrailerStage/TrailerStage';
 
@@ -8,13 +8,10 @@ import { useState, useEffect, useRef } from "react";
 
 function Hero(props) {
 
-    const [current, setCurrent] = useState(0)
+    const [current, setCurrent] = useState(0);
 
     const nextMovie = () => {
         setCurrent(current === props.movies.length - 1 ? 0 : current + 1);
-    }
-    const previousMovie = () => {
-        setCurrent(current === 0 ? props.movies.length - 1 : current - 1);
     }
 
     // auto slider behaviour -> change to next slide every 3 seconds, unless mouse is over slide or media is playing

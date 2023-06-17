@@ -14,8 +14,8 @@ function HeroPoster(props) {
     const backdropImage = `${props.imagesBaseUrl}${props.movie.backdrop_path}`;
 
     const genres = props.movie.genre_ids.map(id => {
-        const genre = props.genreList.find((genre) => id === genre.id)
-        return genre.name
+        const genre = props.genreList.find((genre) => id === genre.id);
+        return genre.name;
     });
 
 

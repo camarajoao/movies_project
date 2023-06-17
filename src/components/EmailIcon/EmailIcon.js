@@ -12,7 +12,7 @@ function EmailIcon({ theme, author }) {
 
     const [show, setShow] = useState(false);
 
-    const onClose = () => setShow(false)
+    const onClose = () => setShow(false);
 
     return (
         <>

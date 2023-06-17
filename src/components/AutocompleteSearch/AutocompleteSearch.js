@@ -27,23 +27,23 @@ function AutocompleteSearch({ theme,sidebarState }) {
             // setting the request params for the API endpoint
             const searchParams = getRequestParams(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=en-US&page=1`);
             // make API request
-            getDataFromAPI(searchParams, setSearchResults)
+            getDataFromAPI(searchParams, setSearchResults);
         }
         else {
-            resetSearch()
+            resetSearch();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm, sidebarState]);
 
     const onInput = (e) => {
-        setSearchTerm(e.target.value)
+        setSearchTerm(e.target.value);
     }
 
     const resetSearch = () => {
-        setSearchTerm('')
-        setSearchResults(null)
+        setSearchTerm('');
+        setSearchResults(null);
         if(sidebarSearchInput){
-            sidebarSearchInput.value = ''
+            sidebarSearchInput.value = '';
         }
     }
 
