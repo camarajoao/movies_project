@@ -21,7 +21,7 @@
         @extend .individual-container__picture;
         height: 20rem;
         object-fit: cover;
-        object-position: 0 top;
+        object-position: 50% top;
     }
 
     &__profile-details {
