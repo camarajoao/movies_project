@@ -11,7 +11,7 @@ import arrowRightYellow from '../../assets/icons/arrow-right-yellow.svg';
 
 function ListOfMovies(props) {
 
-    const moviesList = props.movies.slice(0, 10)
+    const moviesList = props.movies.slice(0, 12)
 
     const ref = useRef(null);
 
@@ -25,10 +25,10 @@ function ListOfMovies(props) {
                 <h1 className="list-of-movies__header">{props.sectionTitle}</h1>
                 <div className='list-of-movies__scroll'>
                     <button className='list-of-movies__button-left' onClick={() => scroll(-250)}>
-                        <img src={props.theme === 'light' ? arrowLeftBlack : arrowLeftYellow} className='list-of-movies__button-left__arrow' />
+                        <img src={props.theme === 'light' ? arrowLeftBlack : arrowLeftYellow} className='list-of-movies__button-left__arrow' alt="circle with an arrow pointing left"/>
                     </button>
                     <button className='list-of-movies__button-right' onClick={() => scroll(250)}>
-                        <img src={props.theme === 'light' ? arrowRightBlack : arrowRightYellow} className='list-of-movies__button-right__arrow' />
+                        <img src={props.theme === 'light' ? arrowRightBlack : arrowRightYellow} className='list-of-movies__button-right__arrow' alt="circle with an arrow pointing right"/>
                     </button>
                 </div>
             </div>
