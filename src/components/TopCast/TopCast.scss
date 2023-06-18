@@ -1,0 +1,39 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.topcast {
+    position: relative;
+
+    &__top {
+        @extend .section-separator;
+        @include flex(space-between, row);
+    }
+
+    &__cast {
+        @extend .list-container;
+    }
+
+    &__profile-container {
+        @extend .individual-container;
+    }
+
+    &__profile-picture {
+        @extend .individual-container__picture;
+        height: 20rem;
+        object-fit: cover;
+        object-position: 50% top;
+    }
+
+    &__profile-details {
+        padding: .8rem;
+    }
+
+    &__button-left,
+    &__button-right {
+        @extend .scroll-buttons;
+
+        &__arrow {
+            @include width-height(3rem, 3rem);
+        }
+    }
+}

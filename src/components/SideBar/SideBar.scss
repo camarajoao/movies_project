@@ -8,18 +8,27 @@
     position: fixed;
     left: -100%;
     top: 0;
+    bottom: 0;
     padding: 1.6rem;
-    z-index: 3;
+    z-index: 4;
     transition: 850ms;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     @include tablet {
         width: 50%;
         padding: 1.6rem 2.4rem;
     }
 
+    @include desktop-small {
+        width: 35%;
+    }
+
     &__header {
         @include flex(space-between, row);
-        align-items: center;
         padding-bottom: 1.6rem;
         border-bottom: 2px solid var(--header-border-bottom);
 
@@ -37,58 +46,12 @@
         }
     }
 
-    &__search {
-        position: relative;
-        margin: 1.6rem 0;
-
-        @include tablet {
-            // margin: 0;
-        }
-
-        &-input {
-            @include width-height(100%, 4rem);
-            border-radius: .4rem;
-            padding-left: 4rem;
-            border: 1px solid $movie-light-black;
-            background-color: var(--input-bg-color);
-            color: var(--input-text-color);
-
-            &::placeholder {
-                color: var(--input-placeholder-color);
-            }
-
-            &:focus::placeholder {
-                color: transparent;
-            }
-
-            &:focus {
-                border: .2rem solid $movie-yellow;
-                outline: none;
-            }
-        }
-
-        &-icon {
-            @include width-height(2rem, 2rem);
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0;
-
-            &__icon {
-                @include width-height(2rem, 2rem);
-            }
-        }
-    }
-
     &__close-button {
         @include width-height(2rem, 2rem);
         @include flex(center, null);
-        align-items: center;
         border: none;
         background-color: transparent;
+        cursor: pointer;
 
         @include tablet {
             @include width-height(2.5rem, 2.5rem);

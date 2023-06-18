@@ -1,61 +1,47 @@
 // child of Home page
 import './HeroPoster.scss';
 
-import { useState, useEffect } from "react";
-import axios from 'axios';
-import thumbUp from '../../assets/icons/hand-thumbs-up-fill.svg';
-import thumbDown from '../../assets/icons/hand-thumbs-down-fill.svg';
+import { Link } from 'react-router-dom';
 
-function HeroPoster({ baseUrl, requestUrl, genreList }) {
+import { useWindowSize } from '../../helpers/useWindowSize';
+
+function HeroPoster(props) {
+
+    const isTablet = useWindowSize(768);
+
+    const moviePoster = `${props.imagesBaseUrl}${props.movie.poster_path}`;
+
+    const backdropImage = `${props.imagesBaseUrl}${props.movie.backdrop_path}`;
+
+    const genres = props.movie.genre_ids.map(id => {
+        const genre = props.genreList.find((genre) => id === genre.id);
+        return genre.name;
+    });
 
 
-
-    const options = {
-        method: 'GET',
-        url: requestUrl,
-        headers: {
-            accept: 'application/json',
-            Authorization: process.env.REACT_APP_BEARER_KEY
-        }
-    };
-
-    const [movieData, setMovieData] = useState(null);
-
-    useEffect(() => {
-        axios
-            .request(options)
-            .then((response) => {
-                setMovieData(response.data.results[0]);
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-    }, [])
-
-    if (!movieData) {
-        return
-    }
-
-    const moviePoster = `${baseUrl}${movieData.poster_path}`;
 
     return (
-        <div className="poster">
-            <img src={moviePoster} className="poster__image" />
+        <div className="poster" onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
+            <Link className="poster__link" to={`movies/${props.movie.id}`}>
+                <img src={moviePoster} className="poster__image" alt={`official poster for the movie ${props.movie.original_title}`} />
+            </Link>
+            {isTablet ? <img src={backdropImage} className="poster__backdrop-image" alt={`official backdrop-poster for the movie ${props.movie.original_title}`} /> : null}
             <div className='poster__description'>
-                <h2 className='poster__description__title'>{movieData.original_title}</h2>
+                <h2 className='poster__description__title'>{props.movie.original_title}</h2>
                 <div className='poster__description__release'>
-                    <p className='poster__description__release__date'>Release Date</p>
-                    <p>{movieData.release_date}</p>
+                    <h4 className='poster__description__release__header'>Release Date:&nbsp;</h4>
+                    <p>{props.movie.release_date}</p>
                 </div>
                 <div className='poster__description__rating'>
-                    <p className='poster__description__rating__header'>Rating:</p>
-                    <p>{movieData.vote_average}</p>
-                    <img src={movieData.vote_average >= 6.0 ? thumbUp : thumbDown} className='poster__description__rating__thumb' />
+                    <h4 className='poster__description__rating__header'>Rating:&nbsp;</h4>
+                    <p>{props.movie.vote_average}</p>
                 </div>
                 <div className='poster__description__genre'>
-                    <p className='poster__description__genre__header'>Genre</p>
-                    {/* <p>{movieData.genre_ids.map((id, index) => genreList.find((genre) => id === genre.id))}</p> */}
+                    <h4 className='poster__description__genre__header'>Genre:&nbsp;</h4>
+                    <p>{genres.join(", ")}</p>
                 </div>
+                <h4 className="poster__overview__header">Overview</h4>
+                <p className="poster__overview__content">{props.movie.overview}</p>
             </div>
         </div>
     )

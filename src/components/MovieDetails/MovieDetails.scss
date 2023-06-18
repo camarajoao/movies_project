@@ -1,0 +1,29 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.moviedetails {
+    box-sizing: border-box;
+    background-color: var(--secondary-background-color);
+    position: relative;
+    width: 100vw;
+    left: -1.6rem;
+    padding: 1.6rem;
+    margin-top: 1.6rem;
+
+    @include tablet {
+        left: -3.2rem;
+    }
+
+    &__categories {
+        @include flex(null, row, null);
+        margin: .8rem 0;
+
+        &:last-of-type {
+            margin: 0;
+        }
+
+        & a {
+            color: var(--text-color);
+        }
+    }
+}

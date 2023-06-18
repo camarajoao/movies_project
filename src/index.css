@@ -1,19 +1,33 @@
 :root {
   --text-color: #111;
+  --secondary-text-color: #AFAFAF;
   --background: #fff;
+  --secondary-background-color: #f5f5f5;
   --input-text-color: #323232;
   --input-bg-color: #fff;
   --input-placeholder-color: #323232;
   --header-border-bottom: #111;
+  --gradient-bg: linear-gradient(to right, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 0) 65%);
+  --tagline-color: #000;
+  --profile-shadow: rgba(0, 0, 0, 0.1);
+  --form-button-bg-color: #111;
+  --form-button-color: #fff;
 }
 
 [data-theme='dark'] {
   --text-color: #fff;
+  --secondary-text-color: #FDC500;
   --background: #111;
+  --secondary-background-color: #1f1f1f;
   --input-text-color: #AFAFAF;
   --input-bg-color: #323232;
   --input-placeholder-color: #AFAFAF;
   --header-border-bottom: #FDC500;
+  --gradient-bg: linear-gradient(to right, rgba(17, 17, 17, 1) 15%, rgba(17, 17, 17, 0) 70%);
+  --tagline-color: #FDC500;
+  --profile-shadow: rgba(255, 255, 255, 0.2);
+  --form-button-bg-color: #FDC500;
+  --form-button-color: #111;
 }
 
 body {

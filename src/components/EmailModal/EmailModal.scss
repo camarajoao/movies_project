@@ -1,0 +1,103 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+
+.emailmodal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(19, 24, 44, .8);
+    z-index: 5;
+    box-sizing: border-box;
+
+    &__content {
+        @include width-height(100%, 100%);
+        background-color: var(--background);
+        @include flex(center, column, null);
+        vertical-align: middle;
+
+        @include tablet {
+            background-color: transparent;
+            @include width-height(80%, 100%);
+            margin: auto;
+        }
+
+        @include desktop {
+            background-color: transparent;
+            @include width-height(70%, 100%);
+            margin: auto;
+        }
+    }
+
+    &__close {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 1.6rem;
+        top: 1.6rem;
+        cursor: pointer;
+        @include width-height(3rem, 3rem);
+
+        &__icon {
+            @include width-height(3rem, 3rem);
+        }
+    }
+}
+
+.form {
+    @include flex(center, column);
+    padding: 1.6rem;
+    box-sizing: border-box;
+
+    &__input {
+        @include width-height(100%, 4rem);
+        margin-bottom: .8rem;
+        padding: .8rem;
+        box-sizing: border-box;
+        border-radius: .8rem;
+        border: 1px solid black;
+        outline: none;
+
+        &:focus::placeholder {
+            color: transparent;
+        }
+
+        &--error {
+            //box-shadow: 0 0 5px 2px $danger;
+            border: 1px solid red;
+        }
+    }
+
+    &__textarea {
+        @extend .form__input;
+        min-height: 20rem;
+
+        @include tablet {
+            min-height: 25rem;
+        }
+
+        @include desktop {
+            min-height: 30rem;
+        }
+
+        &--error {
+            //box-shadow: 0 0 5px 2px $danger;
+            border: 1px solid red;
+        }
+    }
+
+    &__button {
+        @extend .form__input;
+        background-color: var(--form-button-bg-color);
+        color: var(--form-button-color);
+        border: none;
+        max-width: 40rem;
+
+        &:hover,
+        &:focus {
+            font-size: calc(180%);
+            transition: 1s;
+        }
+    }
+}

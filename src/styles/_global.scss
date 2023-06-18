@@ -13,7 +13,6 @@ $avenir: 'AvenirNextLTPro';
 
 $movie-light-black: #323232;
 $movie-yellow: #FDC500;
-$movie-gold: #FDC500;
 $silver: #AFAFAF;
 
 h1 {
@@ -43,72 +42,32 @@ h2 {
 }
 
 h3 {
-    @include font-size-height-weight(1.8rem, 2.1rem, 400);
+    @include font-size-height-weight(1.8rem, 2.1rem, 600);
     margin: 0;
 
     @include tablet {
-        @include font-size-height-weight(2.1rem, 2.4rem, 400);
+        @include font-size-height-weight(2.1rem, 2.4rem, 600);
     }
 
     @include desktop {
-        @include font-size-height-weight(2.4rem, 2.7rem, 400);
+        @include font-size-height-weight(2.4rem, 2.7rem, 600);
     }
 }
 
-p {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
+h4 {
+    @include font-size-height-weight(1.6rem, 2.4rem, 600);
     margin: 0;
 
     @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
+        @include font-size-height-weight(1.8rem, 2.6rem, 600);
     }
 
     @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
+        @include font-size-height-weight(2.1rem, 3rem, 600);
     }
 }
 
-input {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-a {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-    text-decoration: none;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-div {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
-
-    @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
-    }
-}
-
-button {
+p, input, a, div, button, li, textarea, span {
     @include font-size-height-weight(1.6rem, 2.4rem, 400);
     margin: 0;
 
@@ -133,19 +92,63 @@ option {
     }
 }
 
-li {
-    @include font-size-height-weight(1.6rem, 2.4rem, 400);
-    margin: 0;
+.section-separator {
+    margin: 1.6rem 0;
+}
+
+.pages-styles {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1.6rem;
+    color: var(--text-color);
 
     @include tablet {
-        @include font-size-height-weight(1.8rem, 2.6rem, 400);
-    }
-
-    @include desktop {
-        @include font-size-height-weight(2.1rem, 3rem, 400);
+        padding: 1.6rem 3.2rem;
     }
 }
 
-.section-separator {
-    margin: 1.6rem 0;
+.individual-container {
+    width: 15rem;
+    margin: .4rem .8rem;
+    border-radius: .8rem;
+    box-shadow: 0px 0px 4px 1px var(--profile-shadow);
+
+    &:first-child {
+        margin-left: .3rem;
+    }
+
+    &:last-child {
+        margin-right: .3rem;
+    }
+}
+
+.individual-container__picture {
+    width: 15rem;
+    border-radius: .8rem .8rem 0 0;
+}
+
+.list-container {
+    @include flex(null, row, null);
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    @include desktop-small {
+        overflow-x: hidden;
+    }
+}
+
+.scroll-buttons {
+    @include width-height(3rem, 3rem);
+    display: none;
+    border: none;
+    background-color: transparent;
+    margin-left: 1.6rem;
+    cursor: pointer;
+
+    @include desktop-small {
+        display: initial;
+    }
 }

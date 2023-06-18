@@ -1,0 +1,39 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/mixins" as *;
+
+.footerauthorsocials {
+    @include flex(center, row);
+    width: 100%;
+    padding: .8rem 0;
+
+    &__author-name {
+        margin-right: 1.6rem;
+        color: var(--text-color);
+    }
+
+    &__image {
+        width: 3rem;
+        margin: 0 .8rem;
+    }
+}
+
+.footer__socials {
+    @include flex(space-around, row);
+    width: 50%;
+
+    @include tablet {
+        width: 40%;
+    }
+
+    @include desktop {
+        width: 30%;
+    }
+
+    &-image {
+        width: 2rem;
+
+        @include desktop {
+            width: 3rem;
+        }
+    }
+}
