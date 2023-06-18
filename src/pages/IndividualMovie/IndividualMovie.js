@@ -48,18 +48,17 @@ function IndividualMovie({ theme }) {
         return
     };
 
-    let recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path && movie.backdrop_path);
+    const recommendationList = recommended.results.filter(movie => movie.adult === false && movie.original_language === "en" && movie.poster_path && movie.backdrop_path);
 
-    if(recommendationList.length <=0) {
-        const genres = movieDetails.genres.map(genre => genre.id).slice(0,2);
-        const [moreRelevant, others] = popular.results.reduce((result, movie) =>
-            {
-                result[genres.some(id => movie.genre_ids.includes(id)) ? 0 : 1].push(movie);
-                return result;
-            },
-        [[], []]);
-        recommendationList = moreRelevant.concat(others);
-    }
+    const genres = movieDetails.genres.map(genre => genre.id).slice(0,2);
+    const [moreRelevant, others] = popular.results.reduce((result, movie) =>
+        {
+            result[genres.some(id => movie.genre_ids.includes(id)) ? 0 : 1].push(movie);
+            return result;
+        },
+    [[], []]);
+    
+    const youMayAlsoLike = recommendationList.concat(recommendationList, moreRelevant, others);
 
     return (
         <div className='individual-movie'>
@@ -69,7 +68,7 @@ function IndividualMovie({ theme }) {
             <MovieOverview movieDetails={movieDetails} />
             <TopCast theme={theme} imageBaseUrl={imagesBaseUrl} cast={topCast.cast} />
             <MovieDetails movieDetails={movieDetails} crew={topCast.crew} />
-            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={recommendationList} sectionTitle={"You may also like"} theme={theme} />
+            <ListOfMovies imagesBaseUrl={imagesBaseUrl} movies={youMayAlsoLike} sectionTitle={"You may also like"} theme={theme} />
         </div>
     )
 }
