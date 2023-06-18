@@ -18,7 +18,7 @@ export const ThemeContext = createContext(null)
 function App() {
 
   // states for page theme
-  const [theme, setTheme] = useLocalStorage('theme' ? localStorage.getItem('theme') : 'light');
+  const [theme, setTheme] = useLocalStorage('theme', 'dark');
   // function that implements ability to toggle page theme
   const toggleTheme = () => {
     setTheme((curr) => (curr === 'light' ? 'dark' : 'light'));
