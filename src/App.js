@@ -18,7 +18,7 @@ export const ThemeContext = createContext(null)
 function App() {
 
   // states for page theme
-  const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light');
+  const [theme, setTheme] = useLocalStorage('theme' ? localStorage.getItem('theme') : 'light');
   // function that implements ability to toggle page theme
   const toggleTheme = () => {
     setTheme((curr) => (curr === 'light' ? 'dark' : 'light'));
@@ -35,7 +35,7 @@ function App() {
   }, [])
   // wait until all API requests are fulfilled to continue
   if (!details) {
-      return
+    return
   }
   // save imageBaseUrl to local storage
   localStorage.setItem('imagesBaseUrl', `${details.images.secure_base_url}original`);
