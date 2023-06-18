@@ -21,10 +21,10 @@ function TrailerStage(props) {
     const handlePlay = () => {
         props.setState(true);
     };
-    
+
     return (
         <div className='trailerstage__background'>
-            <img src={movieTheatre} className='trailerstage__image' alt="theatre red curtains"/>
+            <img src={movieTheatre} className='trailerstage__image' alt="theatre red curtains" />
             <div className='trailerstage'>
                 <div className='player-wrapper' onMouseEnter={() => props.setHover(true)} onMouseLeave={() => props.setHover(false)}>
                     <ReactPlayer
@@ -33,11 +33,12 @@ function TrailerStage(props) {
                         width='100%'
                         height='100%'
                         onPlay={handlePlay}
+                        controls='true'
                     />
                 </div>
             </div>
         </div>
-        
+
     )
 }
 
